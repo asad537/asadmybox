@@ -60,10 +60,7 @@
        <!-- Preload blog featured image for mobile only -->
        <link rel="preload" as="image" href="{{ asset('images/blog/'.$blogFeaturedImage) }}" fetchpriority="high" media="(max-width: 768px)">
    @elseif(isset($our_home_slider) && isset($our_home_slider[0]))
-       <!-- Preload WebP for mobile -->
-       <link rel="preload" as="image" href="{{ url('images/custom-boxes-and-packaging-myboxprinting.webp') }}" fetchpriority="high" media="(max-width: 480px)">
-       <!-- Preload original banner for larger screens -->
-       <link rel="preload" as="image" href="{{ url('images') . '/' . $our_home_slider[0]->slider_banner }}" fetchpriority="high" media="(min-width: 481px)">
+       <link rel="preload" as="image" href="{{ url('images') . '/' . $our_home_slider[0]->slider_banner }}" fetchpriority="high">
    @else
        <link rel="preload" as="image" href="{{ url('MBP-custom-boxes.webp') }}" fetchpriority="high">
    @endif
@@ -82,13 +79,10 @@
            ? time()
            : (file_exists($mbpMainPath) ? filemtime($mbpMainPath) : '');
        $mbpMainHref = url('box_assets/css/mbpmain.min.css') . ($mbpMainVersion ? '?v=' . $mbpMainVersion : '');
-       
-       // Reverting deferral to prevent FOUC - styles are critical for layout
        $criticalStyles = [
            url('box_assets/css/2bootstrap.min.css'),
            $mbpMainHref,
        ];
-       
        $nonCriticalStyles = [
            'https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css',
            url('box_assets/css/preloader.css'),
@@ -118,63 +112,35 @@
     .mt-5{margin-top:5px!important}.mt-10{margin-top:10px}.mt-15{margin-top:15px}.mt-20{margin-top:20px}.mt-25{margin-top:25px}.mt-30{margin-top:30px}.mt-35{margin-top:35px}.mt-40{margin-top:40px}.mt-45{margin-top:45px}.mt-50{margin-top:50px}.mt-55{margin-top:55px}.mt-60{margin-top:60px}.mt-65{margin-top:65px}.mt-70{margin-top:70px}.mt-75{margin-top:75px}.mt-80{margin-top:80px}.mt-85{margin-top:85px}.mt-90{margin-top:90px}.mt-95{margin-top:95px}.mt-100{margin-top:100px}.mt-105{margin-top:105px}.mt-110{margin-top:110px}.mt-115{margin-top:115px}.mt-120{margin-top:120px}.mt-125{margin-top:125px}.mt-130{margin-top:130px}.mt-135{margin-top:135px}.mt-140{margin-top:140px}.mt-145{margin-top:145px}.mt-150{margin-top:150px}.mt-155{margin-top:155px}.mt-160{margin-top:160px}.mt-165{margin-top:165px}.mt-170{margin-top:170px}.mt-175{margin-top:175px}.mt-180{margin-top:180px}.mt-185{margin-top:185px}.mt-190{margin-top:190px}.mt-195{margin-top:195px}.mt-200{margin-top:200px}.mb-5{margin-bottom:5px!important}.mb-10{margin-bottom:10px}.mb-15{margin-bottom:15px}.mb-20{margin-bottom:20px}.mb-25{margin-bottom:25px}.mb-30{margin-bottom:30px}.mb-35{margin-bottom:35px}.mb-40{margin-bottom:40px}.mb-45{margin-bottom:45px}.mb-50{margin-bottom:30px}.mb-55{margin-bottom:55px}.mb-60{margin-bottom:60px}.mb-65{margin-bottom:65px}.mb-70{margin-bottom:70px}.mb-75{margin-bottom:75px}.mb-80{margin-bottom:80px}.mb-85{margin-bottom:85px}.mb-90{margin-bottom:90px}.mb-95{margin-bottom:95px}.mb-100{margin-bottom:100px}.mb-105{margin-bottom:105px}.mb-110{margin-bottom:110px}.mb-115{margin-bottom:115px}.mb-120{margin-bottom:120px}.mb-125{margin-bottom:125px}.mb-130{margin-bottom:130px}.mb-135{margin-bottom:135px}.mb-140{margin-bottom:140px}.mb-145{margin-bottom:145px}.mb-150{margin-bottom:150px}.mb-155{margin-bottom:155px}.mb-160{margin-bottom:160px}.mb-165{margin-bottom:165px}.mb-170{margin-bottom:170px}.mb-175{margin-bottom:175px}.mb-180{margin-bottom:180px}.mb-185{margin-bottom:185px}.mb-190{margin-bottom:190px}.mb-195{margin-bottom:195px}.mb-200{margin-bottom:200px}.ml-5{margin-inline-start:5px}.ml-10{margin-inline-start:10px}.ml-15{margin-inline-start:15px}.ml-20{margin-inline-start:20px}.ml-25{margin-inline-start:25px}.ml-30{margin-inline-start:30px}.ml-35{margin-inline-start:35px}.ml-40{margin-inline-start:40px}.ml-45{margin-inline-start:45px}.ml-50{margin-inline-start:50px}.ml-55{margin-inline-start:55px}.ml-60{margin-inline-start:60px}.ml-65{margin-inline-start:65px}.ml-70{margin-inline-start:70px}.ml-75{margin-inline-start:75px}.ml-80{margin-inline-start:80px}.ml-85{margin-inline-start:85px}.ml-90{margin-inline-start:90px}.ml-95{margin-inline-start:95px}.ml-100{margin-inline-start:100px}.ml-105{margin-inline-start:105px}.ml-110{margin-inline-start:110px}.ml-115{margin-inline-start:115px}.ml-120{margin-inline-start:120px}.ml-125{margin-inline-start:125px}.ml-130{margin-inline-start:130px}.ml-135{margin-inline-start:135px}.ml-140{margin-inline-start:140px}.ml-145{margin-inline-start:145px}.ml-150{margin-inline-start:150px}.ml-155{margin-inline-start:155px}.ml-160{margin-inline-start:160px}.ml-165{margin-inline-start:165px}.ml-170{margin-inline-start:170px}.ml-175{margin-inline-start:175px}.ml-180{margin-inline-start:180px}.ml-185{margin-inline-start:185px}.ml-190{margin-inline-start:190px}.ml-195{margin-inline-start:195px}.ml-200{margin-inline-start:200px}.mr-5{margin-inline-end:5px}.mr-10{margin-inline-end:10px}.mr-15{margin-inline-end:15px}.mr-20{margin-inline-end:20px}.mr-25{margin-inline-end:25px}.mr-30{margin-inline-end:30px}.mr-35{margin-inline-end:35px}.mr-40{margin-inline-end:40px}.mr-45{margin-inline-end:45px}.mr-50{margin-inline-end:50px}.mr-55{margin-inline-end:55px}.mr-60{margin-inline-end:60px}.mr-65{margin-inline-end:65px}.mr-70{margin-inline-end:70px}.mr-75{margin-inline-end:75px}.mr-80{margin-inline-end:80px}.mr-85{margin-inline-end:85px}.mr-90{margin-inline-end:90px}.mr-95{margin-inline-end:95px}.mr-100{margin-inline-end:100px}.mr-105{margin-inline-end:105px}.mr-110{margin-inline-end:110px}.mr-115{margin-inline-end:115px}.mr-120{margin-inline-end:120px}.mr-125{margin-inline-end:125px}.mr-130{margin-inline-end:130px}.mr-135{margin-inline-end:135px}.mr-140{margin-inline-end:140px}.mr-145{margin-inline-end:145px}.mr-150{margin-inline-end:150px}.mr-155{margin-inline-end:155px}.mr-160{margin-inline-end:160px}.mr-165{margin-inline-end:165px}.mr-170{margin-inline-end:170px}.mr-175{margin-inline-end:175px}.mr-180{margin-inline-end:180px}.mr-185{margin-inline-end:185px}.mr-190{margin-inline-end:190px}.mr-195{margin-inline-end:195px}.mr-200{margin-inline-end:200px}.pt-5{padding-top:5px!important}.pt-10{padding-top:10px}.pt-15{padding-top:15px}.pt-20{padding-top:20px}.pt-25{padding-top:25px}.pt-30{padding-top:30px}.pt-35{padding-top:35px}.pt-40{padding-top:40px}.pt-45{padding-top:45px}.pt-50{padding-top:50px}.pt-55{padding-top:55px}.pt-60{padding-top:60px}.pt-65{padding-top:65px}.pt-70{padding-top:70px}.pt-75{padding-top:75px}.pt-80{padding-top:80px}.pt-85{padding-top:85px}.pt-90{padding-top:90px}.pt-95{padding-top:95px}.pt-100{padding-top:100px}.pt-105{padding-top:105px}.pt-110{padding-top:110px}.pt-115{padding-top:115px}.pt-120{padding-top:120px}.pt-125{padding-top:125px}.pt-130{padding-top:130px}.pt-135{padding-top:135px}.pt-140{padding-top:140px}.pt-145{padding-top:145px}.pt-150{padding-top:150px}.pt-155{padding-top:155px}.pt-160{padding-top:160px}.pt-165{padding-top:165px}.pt-170{padding-top:170px}.pt-175{padding-top:175px}.pt-180{padding-top:180px}.pt-185{padding-top:185px}.pt-190{padding-top:190px}.pt-195{padding-top:195px}.pt-200{padding-top:200px}.pb-5{padding-bottom:5px!important}.pb-10{padding-bottom:10px}.pb-15{padding-bottom:15px}.pb-20{padding-bottom:20px}.pb-25{padding-bottom:25px}.pb-30{padding-bottom:30px}.pb-35{padding-bottom:35px}.pb-40{padding-bottom:40px}.pb-45{padding-bottom:45px}.pb-50{padding-bottom:50px}.pb-55{padding-bottom:55px}.pb-60{padding-bottom:60px}.pb-65{padding-bottom:65px}.pb-70{padding-bottom:70px}.pb-75{padding-bottom:75px}.pb-80{padding-bottom:80px}.pb-85{padding-bottom:85px}.pb-90{padding-bottom:90px}.pb-95{padding-bottom:95px}.pb-100{padding-bottom:100px}.pb-105{padding-bottom:105px}.pb-110{padding-bottom:110px}.pb-115{padding-bottom:115px}.pb-120{padding-bottom:120px}.pb-125{padding-bottom:125px}.pb-130{padding-bottom:130px}.pb-135{padding-bottom:135px}.pb-140{padding-bottom:140px}.pb-145{padding-bottom:145px}.pb-150{padding-bottom:150px}.pb-155{padding-bottom:155px}.pb-160{padding-bottom:160px}.pb-165{padding-bottom:165px}.pb-170{padding-bottom:170px}.pb-175{padding-bottom:175px}.pb-180{padding-bottom:180px}.pb-185{padding-bottom:185px}.pb-190{padding-bottom:190px}.pb-195{padding-bottom:195px}.pb-200{padding-bottom:200px}.pl-5{padding-inline-start:5px}.pl-10{padding-inline-start:10px}.pl-15{padding-inline-start:15px}.pl-20{padding-inline-start:20px}.pl-25{padding-inline-start:25px}.pl-30{padding-inline-start:30px}.pl-35{padding-inline-start:35px}.pl-40{padding-inline-start:40px}.pl-45{padding-inline-start:45px}.pl-50{padding-inline-start:50px}.pl-55{padding-inline-start:55px}.pl-60{padding-inline-start:60px}.pl-65{padding-inline-start:65px}.pl-70{padding-inline-start:70px}.pl-75{padding-inline-start:75px}.pl-80{padding-inline-start:80px}.pl-85{padding-inline-start:85px}.pl-90{padding-inline-start:90px}.pl-95{padding-inline-start:95px}.pl-100{padding-inline-start:100px}.pl-105{padding-inline-start:105px}.pl-110{padding-inline-start:110px}.pl-115{padding-inline-start:115px}.pl-120{padding-inline-start:120px}.pl-125{padding-inline-start:125px}.pl-130{padding-inline-start:130px}.pl-135{padding-inline-start:135px}.pl-140{padding-inline-start:140px}.pl-145{padding-inline-start:145px}.pl-150{padding-inline-start:150px}.pl-155{padding-inline-start:155px}.pl-160{padding-inline-start:160px}.pl-165{padding-inline-start:165px}.pl-170{padding-inline-start:170px}.pl-175{padding-inline-start:175px}.pl-180{padding-inline-start:180px}.pl-185{padding-inline-start:185px}.pl-190{padding-inline-start:190px}.pl-195{padding-inline-start:195px}.pl-200{padding-inline-start:200px}.pr-5{padding-inline-end:5px}.pr-10{padding-inline-end:10px}.pr-15{padding-inline-end:15px}.pr-20{padding-inline-end:20px}.pr-25{padding-inline-end:25px}.pr-30{padding-inline-end:30px}.pr-35{padding-inline-end:35px}.pr-40{padding-inline-end:40px}.pr-45{padding-inline-end:45px}.pr-50{padding-inline-end:50px}.pr-55{padding-inline-end:55px}.pr-60{padding-inline-end:60px}.pr-65{padding-inline-end:65px}.pr-70{padding-inline-end:70px}.pr-75{padding-inline-end:75px}.pr-80{padding-inline-end:80px}.pr-85{padding-inline-end:85px}.pr-90{padding-inline-end:90px}.pr-95{padding-inline-end:95px}.pr-100{padding-inline-end:100px}.pr-105{padding-inline-end:105px}.pr-110{padding-inline-end:110px}.pr-115{padding-inline-end:115px}.pr-120{padding-inline-end:120px}.pr-125{padding-inline-end:125px}.pr-130{padding-inline-end:130px}.pr-135{padding-inline-end:135px}.pr-140{padding-inline-end:140px}.pr-145{padding-inline-end:145px}.pr-150{padding-inline-end:150px}.pr-155{padding-inline-end:155px}.pr-160{padding-inline-end:160px}.pr-165{padding-inline-end:165px}.pr-170{padding-inline-end:170px}.pr-175{padding-inline-end:175px}.pr-180{padding-inline-end:180px}.pr-185{padding-inline-end:185px}.pr-190{padding-inline-end:190px}.pr-195{padding-inline-end:195px}.pr-200{padding-inline-end:200px}
     </style>
     
-   <!-- Non-blocking CSS Loading (Best practice for FCP/LCP) -->
+   <!-- CSS here -->
    @foreach ($criticalStyles as $href)
-       <link rel="preload" as="style" href="{{ $href }}">
-       <link rel="stylesheet" href="{{ $href }}" media="print" onload="this.media='all'">
-       <noscript><link rel="stylesheet" href="{{ $href }}"></noscript>
+       <link rel="stylesheet" href="{{ $href }}">
    @endforeach
-   
    @foreach ($nonCriticalStyles as $href)
-       <link rel="preload" as="style" href="{{ $href }}">
-       <link rel="stylesheet" href="{{ $href }}" media="print" onload="this.media='all'">
+       <link rel="preload" as="style" href="{{ $href }}" onload="this.onload=null;this.rel='stylesheet'">
        <noscript><link rel="stylesheet" href="{{ $href }}"></noscript>
    @endforeach
-
-   <!-- Enhanced Inline Critical CSS to prevent FOUC -->
-   <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.5;overflow-x:hidden;background:#fff}
-    .header-main{min-height:70px;background:#fff;display:flex;align-items:center}
-    .container{width:100%;padding:0 15px;margin:0 auto;max-width:1200px}
-    .row{display:flex;flex-wrap:wrap;margin:0 -15px;align-items:center}
-    .col-6{flex:0 0 50%;max-width:50%;padding:0 15px}
-    .logo{display:flex;align-items:center}
-    .logo img{max-width:280px;height:auto;display:block}
-    .hero-btn{display:inline-block;padding:12px 30px;background-color:#86C342;color:#fff!important;font-size:16px;font-weight:600;border-radius:5px;text-decoration:none}
-    
-    /* Hide menus and off-canvas elements before CSS/JS loads to prevent FOUC */
-    .main-menu, .main-menu ul, .sub-menu, 
-    .side-info, #offcanvas-menu, .fix,
-    .mobile-menu, .offset-widget { 
-        display: none !important; 
-    }
-    
-    @media (max-width:767px){
-        .header-main{min-height:60px;padding:5px 0;background:#fff;z-index:9999}
-        .logo img{max-width:240px;height:auto;display:block}
-        .hero-section{display:none!important}
-        .hero-section-mobile{display:block!important;padding:20px 0;background:linear-gradient(135deg,#c6d8b7 0%,#e8e8e8 100%);min-height:300px}
-        .hero-title{font-size:24px;font-weight:700;margin-bottom:10px;text-align:center;color:#2c2c2c}
-        .hero-subtitle{font-size:15px;text-align:center;margin-bottom:20px;color:#4d4b4b}
-        .hide-on-mobile{display:none!important}
-        .cp-header-btn{display:none}
-    }
-    @media (min-width:768px){
-        .hero-section-mobile{display:none!important}
-        .hero-section{display:block!important}
-        .main-menu{display:block}
-        .main-menu ul{display:flex;list-style:none;gap:20px}
-        .main-menu ul li a{text-decoration:none;color:#000}
-    }
-   </style>
-
-   <!-- Preload critical fonts -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <!-- Preload critical fonts with font-display swap -->
    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
    
+   <!-- Add font-display swap for Font Awesome -->
+   <style>
+   @font-face {
+       font-family: 'Font Awesome 5 Pro';
+       font-display: swap;
+   }
+   </style>
+   <!-- Dynamic LCP image preloading removed from here -->
+
+
+
    <link rel="shortcut icon" type="image/x-icon" href="{{url('mbp.png')}}">
    
+   <!-- Preload Font Awesome for faster icon rendering -->
+   <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css">
    <!-- Google Tag Manager - Delayed until window load for performance -->
 <script>
 // Only load GTM after window load to prevent blocking LCP/FCP
