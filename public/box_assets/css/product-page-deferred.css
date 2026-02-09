@@ -1,0 +1,195 @@
+/* Deferred Non-Critical Styles for Product Page */
+.card {
+    height: 580px;
+    margin: 20px 0;
+}
+
+.select-items div,
+.select-selected {
+    background-color: white !important;
+    color: black;
+}
+
+.trusted-by-wrapper {
+    text-align: center;
+    margin: 30px auto 20px;
+    padding: 20px 0;
+}
+
+.heading {
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.logos-wrapper {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.trust-logo-item {
+    transition: transform 0.3s ease;
+    flex: 0 0 auto;
+}
+
+.trust-logo-item:hover {
+    transform: scale(1.05);
+}
+
+.trust-logo-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+.add-read-more.show-less-content .second-section,
+.add-read-more.show-less-content .read-less {
+    display: none;
+}
+
+.add-read-more.show-more-content .read-more {
+    display: none;
+}
+
+.add-read-more .read-more,
+.add-read-more .read-less {
+    font-weight: bold;
+    margin-left: 5px;
+    color: #86C442;
+    cursor: pointer;
+}
+
+.custom-scrollbar {
+    height: 500px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.cp-faq-wrap .accordion-item:last-of-type .accordion-button.collapsed {
+    height: 20px;
+}
+
+.cp-faq-wrap .accordion-button::after {
+    top: 10px !important;
+}
+
+.cp-quote-wrapper {
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.cp-input-field input,
+.cp-input-field select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.cp-border2-btn {
+    background: #86c342;
+    color: #fff;
+    display: inline-block;
+    font-weight: 600;
+
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cp-border2-btn:hover {
+    background: #6ba03a;
+}
+
+.breadcrumb-spacing {
+    padding: 20px 0;
+    background: #f9f9f9;
+}
+
+.trail-items {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    gap: 5px;
+    font-size: 14px;
+}
+
+.trail-items li {
+    display: inline-flex;
+    align-items: center;
+}
+
+.trail-items li:not(:last-child)::after {
+    content: "/";
+    margin: 0 8px;
+    color: #999;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .card {
+        height: auto;
+        min-height: 400px;
+    }
+
+    .cp-quote-wrapper {
+        padding: 15px;
+    }
+
+    .logos-wrapper {
+        flex-direction: row;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .trust-logo-item {
+        flex: 0 0 auto;
+        max-width: 140px;
+    }
+
+    .trust-logo-img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .heading {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .trusted-by-wrapper {
+        margin: 20px auto;
+        padding: 15px 0;
+    }
+}

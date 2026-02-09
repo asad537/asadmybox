@@ -1,0 +1,9 @@
+User-agent: *
+Disallow:https://www.myboxprinting.com/cy/
+Disallow:https://www.myboxprinting.com/ym/
+Disallow:/search/
+
+sitemap: https://www.myboxprinting.com/sitemap.xml
+sitemap: https://www.myboxprinting.com/image-sitemap.xml
+
+

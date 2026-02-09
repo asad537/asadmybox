@@ -1,0 +1,482 @@
+<IfModule mod_rewrite.c>
+    # Allow Googlebot
+    RewriteCond %{HTTP_USER_AGENT} (googlebot|Googlebot|Google-InspectionTool|bingbot|Bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|facebookexternalhit|Twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator|whatsapp|flipboard|tumblr|bitlybot|SkypeUriPreview|nuzzel|Discordbot|Google\ Page\ Speed|Qwantify|pinterestbot|bitrix\ link\ preview|XING-contenttabreceiver|Chrome-Lighthouse|Applebot) [NC]
+    RewriteRule .* - [E=no-gzip:1]
+</IfModule>
+
+# Generated .htaccess - Redirect mappings
+RewriteEngine On
+# Recommended: place this in the site's document root .htaccess
+
+Redirect 301 /how-to-make-a-screen-for-screen-printing/ https://www.myboxprinting.com/blog/how-to-make-a-screen-for-screen-printing/
+Redirect 301 /how-many-cigarettes-are-in-a-pack/ https://www.myboxprinting.com/blog/how-many-cigarettes-are-in-a-pack/
+Redirect 301 /what-is-cardstock/ https://www.myboxprinting.com/blog/what-is-cardstock/
+Redirect 301 /custom- https://www.myboxprinting.com/blog/custom-boxes
+Redirect 301 /images/child-resistant-pre https://www.myboxprinting.com
+Redirect 301 /images/custom-candy https://www.myboxprinting.com
+Redirect 301 /images/custom-pre-roll https://www.myboxprinting.com
+Redirect 301 /images/playing https://www.myboxprinting.com
+Redirect 301 /10-valentines-day-gift-ideas-to-impress-your-loved-ones/ https://www.myboxprinting.com
+Redirect 301 /tissue-box-dimensions/ https://www.myboxprinting.com/blog/tissue-box-dimensions
+Redirect 301 /cmyk-angles-screen-printing-an-overview/ https://www.myboxprinting.com/blog/cmyk-angles-screen-printing-an-overview/
+Redirect 301 /how-much-is-a-quarter-of-weed/ https://www.myboxprinting.com/blog/how-much-is-a-quarter-of-weed
+Redirect 301 /how-to-pack-boxes-for-moving/ https://www.myboxprinting.com/blog/how-to-pack-boxes-for-moving
+Redirect 301 /cake- https://www.myboxprinting.com
+Redirect 301 /how-to-tape-moving-boxes/ https://www.myboxprinting.com/blog/how-to-tape-moving-boxes
+Redirect 301 /wholesale-custom-mylar-bags-printing/ https://www.myboxprinting.com/mylar-bags
+Redirect 301 /blog.php https://www.myboxprinting.com/blog
+Redirect 301 /box-dimensions/ https://www.myboxprinting.com/blog/box-dimensions/
+# Redirect 301 /search/ https://www.myboxprinting.com
+Redirect 301 /how-much-does-cardboard-box-weigh/ https://www.myboxprinting.com/blog/how-much-does-cardboard-box-weigh/
+Redirect 301 /index.php/squeeze-pop-top-plastic-tube https://www.myboxprinting.com
+Redirect 301 /boxstyles.php https://www.myboxprinting.com
+Redirect 301 /how-to-seal-mylar-bags/ https://www.myboxprinting.com/blog/how-to-seal-mylar-bags/
+Redirect 301 /custom-boxes-and-packaging/ https://www.myboxprinting.com/blog/custom-boxes-and-packaging/
+Redirect 301 /how-to-make-a-stencil-for-silk-screen-printing/ https://www.myboxprinting.com/blog/how-to-make-a-stencil-for-silk-screen-printing/
+Redirect 301 /business-card-templates-and-designs/ https://www.myboxprinting.com/blog/business-card-templates-and-designs/
+Redirect 301 /is-screen-printing-or-digital-printing-better/ https://www.myboxprinting.com/blog/is-screen-printing-or-digital-printing-better/
+Redirect 301 /10-tips-that-will-make-you-influential-in-halloween-packaging-boxes/ https://www.myboxprinting.com/blog/10-tips-that-will-make-you-influential-in-halloween-packaging-boxes/
+Redirect 301 /dist/css/font-awesome.min.css https://www.myboxprinting.com
+Redirect 301 /chocolate-gift- https://www.myboxprinting.com/chocolate-gift-boxes
+Redirect 301 /kraft-paper/ https://www.myboxprinting.com/kraft-paper-boxes
+Redirect 301 /dist/css/fancybox.css https://www.myboxprinting.com
+Redirect 301 /other-cardstock-products/term-and-services.php https://www.myboxprinting.com
+Redirect 301 /by-box-style/showcase-exhibit/ https://www.myboxprinting.com/showcase-exhibit
+Redirect 301 /dist/menus/sm-core-css.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.carousel.min.css https://www.myboxprinting.com
+Redirect 301 /shoe-box-dimensions/ https://www.myboxprinting.com/blog/shoe-box-dimensions/
+Redirect 301 /custom-boxes https://www.myboxprinting.com/blog/custom-boxes
+Redirect 301 /how-many-cigarettes-in-a-pack/ https://www.myboxprinting.com/blog/how-many-cigarettes-in-a-pack/
+Redirect 301 /dist/css/font-awesome.min.css https://www.myboxprinting.com
+Redirect 301 /by-box-style/rectangular/ https://www.myboxprinting.com/rectangular
+Redirect 301 /dist/css_box/style.css https://www.myboxprinting.com
+Redirect 301 /term-and-services.php https://www.myboxprinting.com/term-and-services
+Redirect 301 /dist/css_box/style.css https://www.myboxprinting.com
+Redirect 301 /dist/css/fancybox.css https://www.myboxprinting.com
+Redirect 301 /benefits-of-using-mylar-bags/ https://www.myboxprinting.com/blog/benefits-of-using-mylar-bags/
+Redirect 301 /by-box-style/bottom-closure/ https://www.myboxprinting.com/bottom-closure
+Redirect 301 /dist/css/fancybox.css https://www.myboxprinting.com
+Redirect 301 /about-us.php https://www.myboxprinting.com/about-us
+Redirect 301 /dist/menus/sm-blue/sm-blue.css https://www.myboxprinting.com
+Redirect 301 /dist/css/bootstrap.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-blue/sm-blue.css https://www.myboxprinting.com
+Redirect 301 /dist/css/bootstrap.css https://www.myboxprinting.com
+Redirect 301 /dist/css/style.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-blue/sm-blue.css https://www.myboxprinting.com
+Redirect 301 /dist/css/slider/style-slider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/jquery.bxslider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.theme.default.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.carousel.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/font-awesome.min.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-core-css.css https://www.myboxprinting.com
+Redirect 301 /dist/css/style.css https://www.myboxprinting.com
+Redirect 301 /dist/css/font-awesome.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/jquery.bxslider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/slider/style-slider.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-core-css.css https://www.myboxprinting.com
+Redirect 301 /dist/css/jquery.bxslider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/style.css https://www.myboxprinting.com
+Redirect 301 /dist/css/bootstrap.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.theme.default.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/slider/style-slider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/fancybox.css https://www.myboxprinting.com
+Redirect 301 /dist/css_box/style.css https://www.myboxprinting.com
+Redirect 301 /dist/css/fancybox.css https://www.myboxprinting.com
+Redirect 301 /dist/css/slider/style-slider.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-blue/sm-blue.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-core-css.css https://www.myboxprinting.com
+Redirect 301 /dist/css/font-awesome.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/style.css https://www.myboxprinting.com
+Redirect 301 /dist/css/jquery.bxslider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.carousel.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/bootstrap.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.theme.default.min.css https://www.myboxprinting.com
+Redirect 301 /promotional-packaging-artwork/ https://www.myboxprinting.com/blog/promotional-packaging-artwork
+Redirect 301 /Email https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.theme.default.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/style.css https://www.myboxprinting.com
+Redirect 301 /dist/css/slider/style-slider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/jquery.bxslider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/fancybox.css https://www.myboxprinting.com
+Redirect 301 /dist/css/font-awesome.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/bootstrap.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.carousel.min.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-blue/sm-blue.css https://www.myboxprinting.com
+Redirect 301 /dist/css_box/style.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-core-css.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.theme.default.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css_box/style.css https://www.myboxprinting.com
+Redirect 301 /dist/css/style.css https://www.myboxprinting.com
+Redirect 301 /dist/css/slider/style-slider.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-core-css.css https://www.myboxprinting.com
+Redirect 301 /dist/css/bootstrap.css https://www.myboxprinting.com
+Redirect 301 /dist/css/fancybox.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-blue/sm-blue.css https://www.myboxprinting.com
+Redirect 301 /dist/css/jquery.bxslider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.carousel.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/font-awesome.min.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-blue/sm-blue.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-blue/sm-blue.css https://www.myboxprinting.com
+Redirect 301 /dist/css/fancybox.css https://www.myboxprinting.com
+Redirect 301 /dist/css/slider/style-slider.css https://www.myboxprinting.com
+Redirect 301 /dist/css_box/style.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.theme.default.min.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-core-css.css https://www.myboxprinting.com
+Redirect 301 /dist/css/bootstrap.css https://www.myboxprinting.com
+Redirect 301 /dist/css/jquery.bxslider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.theme.default.min.css https://www.myboxprinting.com
+Redirect 301 /returns.php https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.carousel.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css_box/style.css https://www.myboxprinting.com
+Redirect 301 /dist/css/font-awesome.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/jquery.bxslider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/style.css https://www.myboxprinting.com
+Redirect 301 /dist/css/bootstrap.css https://www.myboxprinting.com
+Redirect 301 /contact-us.php https://www.myboxprinting.com/contact-us/
+Redirect 301 /blog/upgrade-your-packaging-strategy-with-our-custom-box-solutions--enhancing-functionality-and-visual-appeal/ https://www.myboxprinting.com
+Redirect 301 /pacdora-3d-design-tool-for-custom-packaging/ https://www.myboxprinting.com/blog/pacdora-3d-design-tool-for-custom-packaging/
+Redirect 301 /mothers-day-gift-ideas-to-surprise-your-mom/ https://www.myboxprinting.com/blog/mothers-day-gift-ideas-to-surprise-your-mom/
+Redirect 301 /cmyk-cyan-magenta/ https://www.myboxprinting.com/blog/cmyk-cyan-magenta/
+Redirect 301 /blog/is-cardboard-environmentally-friendly-/ https://www.myboxprinting.com/blog/is-cardboard-environmentally-friendly/
+Redirect 301 /christmas-gift-boxes https://www.myboxprinting.com/christmas-gift-box/
+Redirect 301 /blog/what-is-difference-between-degradable-and-biodegradable-/ https://www.myboxprinting.com/blog/what-is-difference-between-degradable-and-biodegradable
+Redirect 301 /5-ideas-for-compostable-biodegradable-friendly-packaging/ https://www.myboxprinting.com/blog/5-ideas-for-compostable-biodegradable-friendly-packaging/
+Redirect 301 /dist/css/slider/style-slider.css https://www.myboxprinting.com
+Redirect 301 /why-mbp.php https://www.myboxprinting.com/why-mbp
+Redirect 301 /what-is-difference-between-degradable-and-biodegradable-/ https://www.myboxprinting.com/blog/what-is-difference-between-degradable-and-biodegradable-/
+Redirect 301 /starting-from-hundered-boxes.php https://www.myboxprinting.com
+Redirect 301 /how-does-screen-printing-work/ https://www.myboxprinting.com/blog/how-does-screen-printing-work/
+Redirect 301 /takeout-paper-bag-size/ https://www.myboxprinting.com/blog/takeout-paper-bag-size/
+Redirect 301 /dist/css/style.css https://www.myboxprinting.com
+Redirect 301 /what-does-collate-mean-when-printing/ https://www.myboxprinting.com/blog/what-does-collate-mean-when-printing/
+Redirect 301 /dist/menus/sm-blue/sm-blue.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-core-css.css https://www.myboxprinting.com
+Redirect 301 /blog/is-cardboard-environmentally-friendly-//1000 https://www.myboxprinting.com/blog/is-cardboard-environmentally-friendly
+Redirect 301 /blog/is-cardboard-environmentally-friendly-/myboxprintingus https://www.myboxprinting.com/blog/is-cardboard-environmentally-friendly
+Redirect 301 /custom-boxes-with-logo/ https://www.myboxprinting.com/blog/custom-boxes-with-logo/
+Redirect 301 /roll-end-tuck-top//1000 https://www.myboxprinting.com/blog/roll-end-tuck-top/
+Redirect 301 /index.php/premium-squeeze-top-child-resistant-pre-roll-tube https://www.myboxprinting.com
+Redirect 301 /delivery-information.php https://www.myboxprinting.com/delivery-information
+Redirect 301 /sign_in/ www.myboxprinting.com/
+Redirect 301 /paper-brief-case/ www.myboxprinting.com/
+Redirect 301 /what-size-tin-for-storing-spice/ https://www.myboxprinting.com/blog/what-size-tin-for-storing-spice/
+Redirect 301 /dist/css/fancybox.css www.myboxprinting.com/
+Redirect 301 /custom-packaging-and-design-services-for-business/ www.myboxprinting.com/
+Redirect 301 /dist/css/font-awesome.min.css www.myboxprinting.com/
+# Redirect 301 /search/ www.myboxprinting.com/
+Redirect 301 /how-to-burn-a-screen-for-screen-printing/ https://www.myboxprinting.com/blog/how-to-burn-a-screen-for-screen-printing/
+Redirect 301 /choosing-between-mailer-boxes-and-shipping-boxes/ https://www.myboxprinting.com/blog/choosing-between-mailer-boxes-and-shipping-boxes/
+Redirect 301 /index.php/blog/what-is-difference-between-degradable-and-biodegradable-/ https://www.myboxprinting.com/index.php/blog/what-is-difference-between-degradable-and-biodegradable/
+Redirect 301 /dist/css/bootstrap.css https://www.myboxprinting.com
+Redirect 301 /what-is-environmental-packaging-/ https://www.myboxprinting.com/blog/what-is-environmental-packaging/
+Redirect 301 /pyramid-boxes//1000 https://www.myboxprinting.com/pyramid-boxes/
+Redirect 301 /custom-quote.php https://www.myboxprinting.com/get-quote/
+Redirect 301 /dist/menus/sm-blue/sm-blue.css https://www.myboxprinting.com
+Redirect 301 /what-is-custom-packaging/ https://www.myboxprinting.com/blog/what-is-custom-packaging/
+Redirect 301 /presentation-boxes//1000 https://www.myboxprinting.com/presentation-boxes
+Redirect 301 /the-value-of-collaboration-in-display-boxes--unlocking-creativity-and-boosting-sales/ https://www.myboxprinting.com/blog/the-value-of-collaboration-in-display-boxes--unlocking-creativity-and-boosting-sales/
+Redirect 301 /custom-boxes/ https://www.myboxprinting.com/custom-box-packaging/
+Redirect 301 /custom-packaging-solution-for-small-business/ https://www.myboxprinting.com/blog/custom-packaging-solution-for-small-business/
+Redirect 301 /by-box-style/figure---pattern/ https://www.myboxprinting.com/figure-pattern/
+Redirect 301 /dist/css_box/style.css https://www.myboxprinting.com
+Redirect 301 /blog.php https://www.myboxprinting.com/blog?page=2
+Redirect 301 /dist/css/owl.carousel.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.carousel.min.css https://www.myboxprinting.com
+Redirect 301 /custom-boxes-for-small-business/ https://www.myboxprinting.com/blog/custom-boxes-for-small-business/
+Redirect 301 /what-is-sustainable-packaging/ https://www.myboxprinting.com/blog/what-is-sustainable-packaging/
+Redirect 301 /what-is-difference-between-degradable-and-biodegradable/ https://www.myboxprinting.com/blog/what-is-difference-between-degradable-and-biodegradable/
+Redirect 301 /dist/css/owl.carousel.min.css https://www.myboxprinting.com
+Redirect 301 /milk-carton-box-dimensions/ https://www.myboxprinting.com/blog/milk-carton-box-dimensions/
+Redirect 301 /benefits-of-using-polyester-ink-for-screen-printing/ https://www.myboxprinting.com/blog/benefits-of-using-polyester-ink-for-screen-printing/
+Redirect 301 /meticulously-designed-packaging/ https://www.myboxprinting.com/blog/meticulously-designed-packaging/
+Redirect 301 /get-your-hands-on-the-best-mystery-boxes-for-sale/ https://www.myboxprinting.com/blog/get-your-hands-on-the-best-mystery-boxes-for-sale/
+Redirect 301 /cmyk-screen-printing-photoshop-an-overview/ https://www.myboxprinting.com/blog/cmyk-screen-printing-photoshop-an-overview/
+Redirect 301 /is-cardboard-environmentally-friendly-/ https://www.myboxprinting.com/blog/is-cardboard-environmentally-friendly
+Redirect 301 /dist/css/style.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-core-css.css https://www.myboxprinting.com
+Redirect 301 /what-is-flexographic-printing-a-comprehensive-guide/ https://www.myboxprinting.com/blog/what-is-flexographic-printing-a-comprehensive-guide/
+Redirect 301 /dist/css/slider/style-slider.css https://www.myboxprinting.com
+Redirect 301 /the-most-beautiful-lotion-boxes-for-the-love-of-your-life/ https://www.myboxprinting.com/blog/the-most-beautiful-lotion-boxes-for-the-love-of-your-life/
+Redirect 301 /dist/css/font-awesome.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/bootstrap.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.carousel.min.css https://www.myboxprinting.com
+# Redirect 301 /search/ www.myboxprinting.com/
+Redirect 301 /difference-between-screen-print-and-digital-print/ https://www.myboxprinting.com/blog/difference-between-screen-print-and-digital-print/
+Redirect 301 /wow-your-customers-with-premium-custom-boxes-that-exude-quality-and-professionalism/ https://www.myboxprinting.com/blog/wow-your-customers-with-premium-custom-boxes-that-exude-quality-and-professionalism/
+Redirect 301 /why-eco-friendly-beauty-packaging-is-on-the-rise-in-2019/ https://www.myboxprinting.com/blog/why-eco-friendly-beauty-packaging-is-on-the-rise-in-2019/
+Redirect 301 /us-flag-images-the-independence-day-special/ https://www.myboxprinting.com/blog/us-flag-images-the-independence-day-special/
+Redirect 301 /how-to-remove-screen-printing-from-shirt/ https://www.myboxprinting.com/blog/how-to-remove-screen-printing-from-shirt/
+Redirect 301 /the-best-ways-to-use-home-depot-cardboard-boxes/ https://www.myboxprinting.com/blog/the-best-ways-to-use-home-depot-cardboard-boxes/
+Redirect 301 /what-ink-do-you-use-for-screen-printing/ https://www.myboxprinting.com/blog/what-ink-do-you-use-for-screen-printing/
+Redirect 301 /what-do-you-need-for-silk-screen-printing/ https://www.myboxprinting.com/blog/what-do-you-need-for-silk-screen-printing/
+Redirect 301 /the-6-qualities-exploring-a-perfume-box/ https://www.myboxprinting.com/blog/the-6-qualities-exploring-a-perfume-box/
+Redirect 301 /1-2-price-boxes-the-smart-way-to-save-money/ https://www.myboxprinting.com/blog/1-2-price-boxes-the-smart-way-to-save-money/
+Redirect 301 /small-business-packaging-ideas/ https://www.myboxprinting.com/blog/small-business-packaging-ideas/
+Redirect 301 /how-much-does-screen-printing-cost/ https://www.myboxprinting.com/blog/how-much-does-screen-printing-cost/
+Redirect 301 /what-are-the-principles-of-eco-friendly-packaging/ https://www.myboxprinting.com/blog/what-are-the-principles-of-eco-friendly-packaging/
+Redirect 301 /the-6-benefits-of-cbd-gold-bee/ https://www.myboxprinting.com/blog/the-6-benefits-of-cbd-gold-bee/
+Redirect 301 /what-is-rip-software-for-screen-printing/ https://www.myboxprinting.com/blog/what-is-rip-software-for-screen-printing/
+Redirect 301 /what-is-screen-printing-a-detailed-overview/ https://www.myboxprinting.com/blog/what-is-screen-printing-a-detailed-overview/
+# Redirect 301 /search/{search_term_string}https://www.myboxprinting.com/search/ https://www.myboxprinting.com
+Redirect 301 /by-box-style/top-closure/ https://www.myboxprinting.com/top-closure/
+Redirect 301 /how-does-modified-atmosphere-packaging-protects-foods/ https://www.myboxprinting.com/blog/how-does-modified-atmosphere-packaging-protects-foods/
+Redirect 301 /how-to-make-screen-printing-stencils/ https://www.myboxprinting.com/blog/how-to-make-screen-printing-stencils/
+Redirect 301 /mylar-vs-rigid-packaging/ https://www.myboxprinting.com/blog/mylar-vs-rigid-packaging/
+Redirect 301 /different-box-printing-techniques-used-in-packaging-industry/ https://www.myboxprinting.com/blog/different-box-printing-techniques-used-in-packaging-industry/
+Redirect 301 /dist/menus/sm-core-css.css https://www.myboxprinting.com
+Redirect 301 /dist/css/fancybox.css https://www.myboxprinting.com
+Redirect 301 /returns/ https://www.myboxprinting.com/return-policy/
+Redirect 301 /blog.php https://www.myboxprinting.com/blog?page=4
+Redirect 301 /eight-days-turnaround.php https://www.myboxprinting.com/delivery-information/
+Redirect 301 /dist/css/bootstrap.css https://www.myboxprinting.com
+Redirect 301 /-half-circular-interlocking-top-flaps/ https://www.myboxprinting.com/half-circular-interlocking-top-flaps/
+Redirect 301 /dist/css/font-awesome.min.css https://www.myboxprinting.com
+Redirect 301 /boxstyles.php https://www.myboxprinting.com
+Redirect 301 /dist/css/fancybox.css https://www.myboxprinting.com
+Redirect 301 /oll-end-tuck-top/ https://www.myboxprinting.com/roll-end-tuck-top/
+Redirect 301 /dist/css/style.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-blue/sm-blue.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-blue/sm-blue.css https://www.myboxprinting.com
+Redirect 301 /dist/css/font-awesome.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.carousel.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/jquery.bxslider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/bootstrap.css https://www.myboxprinting.com
+Redirect 301 /dist/css/fancybox.css https://www.myboxprinting.com
+Redirect 301 /dist/css/style.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-core-css.css https://www.myboxprinting.com
+Redirect 301 /dist/css/slider/style-slider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.theme.default.min.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-blue/sm-blue.css https://www.myboxprinting.com
+Redirect 301 /dist/css/slider/style-slider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/bootstrap.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.theme.default.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/font-awesome.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/fancybox.css https://www.myboxprinting.com
+Redirect 301 /dist/css/jquery.bxslider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.carousel.min.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-core-css.css https://www.myboxprinting.com
+Redirect 301 /dist/css/fancybox.css https://www.myboxprinting.com
+Redirect 301 /dist/css/bootstrap.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.carousel.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/font-awesome.min.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-core-css.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.theme.default.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/slider/style-slider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/style.css https://www.myboxprinting.com
+Redirect 301 /dist/css/slider/style-slider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/fancybox.css https://www.myboxprinting.com
+Redirect 301 /account/forgot_password https://www.myboxprinting.com/
+Redirect 301 /blog.php https://www.myboxprinting.com/blog?page=9
+Redirect 301 /dist/css/owl.theme.default.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css_box/style.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-blue/sm-blue.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-core-css.css https://www.myboxprinting.com
+Redirect 301 /dist/css/bootstrap.css https://www.myboxprinting.com
+Redirect 301 /dist/css/jquery.bxslider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.carousel.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/font-awesome.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/style.css https://www.myboxprinting.com
+Redirect 301 /makeup-boxes//1000 https://www.myboxprinting.com/makeup-boxes
+Redirect 301 /index.php/oll-end-tuck-top https://www.myboxprinting.com/roll-end-tuck-top
+Redirect 301 /oll-end-tuck-top https://www.myboxprinting.com/roll-end-tuck-top/
+Redirect 301 /privacy-policy.php https://www.myboxprinting.com/privacy-policy/
+Redirect 301 /index.php/oll-end-tuck-top/ https://www.myboxprinting.com/roll-end-tuck-top/
+Redirect 301 /custom-quote.php https://www.myboxprinting.com/get-quote/
+Redirect 301 /other-cardstock-products/privacy-policy.php https://www.myboxprinting.com/privacy-policy/
+Redirect 301 /roll-end-tray//1000 https://www.myboxprinting.com/roll-end-tray
+Redirect 301 /dist/menus/sm-blue/sm-blue.css https://www.myboxprinting.com
+Redirect 301 /dist/css_box/style.css https://www.myboxprinting.com
+Redirect 301 /dist/css/slider/style-slider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.theme.default.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/style.css https://www.myboxprinting.com
+Redirect 301 /dist/css/bootstrap.css https://www.myboxprinting.com
+Redirect 301 /dist/css/jquery.bxslider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.carousel.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/bootstrap.css https://www.myboxprinting.com
+Redirect 301 /dist/css_box/style.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-blue/sm-blue.css https://www.myboxprinting.com
+Redirect 301 /dist/css/fancybox.css https://www.myboxprinting.com
+Redirect 301 /dist/css/jquery.bxslider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/slider/style-slider.css https://www.myboxprinting.com
+Redirect 301 /dist/css/style.css https://www.myboxprinting.com
+Redirect 301 /dist/css/font-awesome.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.theme.default.min.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-core-css.css https://www.myboxprinting.com
+# Redirect 301 /search/ https://www.myboxprinting.com
+Redirect 301 /dist/css/slider/style-slider.css https://www.myboxprinting.com
+Redirect 301 /dist/css_box/style.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-blue/sm-blue.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.carousel.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/fancybox.css https://www.myboxprinting.com
+Redirect 301 /dist/css/owl.theme.default.min.css https://www.myboxprinting.com
+Redirect 301 /dist/menus/sm-core-css.css https://www.myboxprinting.com
+Redirect 301 /dist/css/font-awesome.min.css https://www.myboxprinting.com
+Redirect 301 /dist/css/style.css https://www.myboxprinting.com
+Redirect 301 /dist/css/bootstrap.css https://www.myboxprinting.com
+Redirect 301 /dist/css/jquery.bxslider.css https://www.myboxprinting.com
+
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/index\.php [NC]
+RewriteRule ^index\.php(.*)$ $1 [R=301,L]
+
+# Ensure index.php is not required in URLs
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?$1 [QSA,L]
+
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+
+RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+RewriteEngine On
+RewriteCond %{HTTP_HOST} !=""
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteCond %{HTTPS}s ^on(s)|
+RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+  # Exclude robots.txt from rewrites
+    RewriteRule ^robots\.txt$ - [L]
+
+
+
+RewriteCond %{REQUEST_URI} !(/$|\.) 
+RewriteRule (.*) %{REQUEST_URI}/ [R=301,L] 
+
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+# TN START GZIP COMPRESSION
+<IfModule mod_gzip.c>
+  mod_gzip_on Yes
+  mod_gzip_dechunk Yes
+  mod_gzip_item_include file \.(html?|txt|css|js|php|pl)$
+  mod_gzip_item_include handler ^cgi-script$
+  mod_gzip_item_include mime ^text/.*
+  mod_gzip_item_include mime ^application/x-javascript.*
+  mod_gzip_item_exclude mime ^image/.*
+  mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+</IfModule>
+# TN END GZIP COMPRESSION
+
+# TN START DEFLATE COMPRESSION
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE "application/atom+xml" \
+    "application/javascript" \
+    "application/json" \
+    "application/ld+json" \
+    "application/manifest+json" \
+    "application/rdf+xml" \
+    "application/rss+xml" \
+    "application/schema+json" \
+    "application/vnd.geo+json" \
+    "application/vnd.ms-fontobject" \
+    "application/x-font" \
+    "application/x-font-opentype" \
+    "application/x-font-otf" \
+    "application/x-font-truetype" \
+    "application/x-font-ttf" \
+    "application/x-javascript" \
+    "application/x-web-app-manifest+json" \
+    "application/xhtml+xml" \
+    "application/xml" \
+    "font/eot" \
+    "font/otf" \
+    "font/ttf" \
+    "font/opentype" \
+    "image/bmp" \
+    "image/svg+xml" \
+    "image/vnd.microsoft.icon" \
+    "image/x-icon" \
+    "text/cache-manifest" \
+    "text/css" \
+    "text/html" \
+    "text/javascript" \
+    "text/plain" \
+    "text/vcard" \
+    "text/vnd.rim.location.xloc" \
+    "text/vtt" \
+    "text/x-component" \
+    "text/x-cross-domain-policy" \
+    "text/xml"
+</IfModule>
+# END DEFLATE COMPRESSION
+
+# TN START ENABLE KEEP ALIVE
+<IfModule mod_headers.c>
+    Header set Connection keep-alive
+</IfModule>
+# TN END ENABLE KEEP ALIVE
+
+# TN - START EXPIRES CACHING #
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+
+  # Images
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # Video
+  ExpiresByType video/mp4 "access plus 1 year"
+  ExpiresByType video/mpeg "access plus 1 year"
+  ExpiresByType video/webm "access plus 1 year"
+
+  # CSS, JavaScript
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType application/x-javascript "access plus 1 year"
+  ExpiresByType text/x-javascript "access plus 1 year"
+
+  # Fonts
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+  ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+  ExpiresByType application/x-font-ttf "access plus 1 year"
+  ExpiresByType font/opentype "access plus 1 year"
+
+  # Others
+  ExpiresByType application/pdf "access plus 1 month"
+  ExpiresByType application/json "access plus 1 hour"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+    # Explicitly set Cache-Control for static assets
+    <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|webp|js|css|swf|x-html|css|xml|js|woff|woff2|ttf|svg|eot)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+    # Disable caching for HTML files
+    <FilesMatch "\.(html|htm|php)$">
+        Header set Cache-Control "max-age=0, private, no-store, no-cache, must-revalidate"
+    </FilesMatch>
+</IfModule>
+FileETag None
+# TN - END EXPIRES CACHING #
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php74” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
