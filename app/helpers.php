@@ -8,11 +8,11 @@ function product_actual_and_original_price($product_id){
 	<span class="sale-price">$<?php if(count($result)>0){echo $result[0]->price;} ?></span>
 	<?php
 }
+
 function social_media(){
  $social_media=DB::table('socials_media')->get();
-
-
 }
+
 function product_star_rating($product_id){
 	$result = DB::table("product_star_rating")->where("product_id", $product_id)->avg("star_rating");
 	$rating_value = round($result);
@@ -55,6 +55,41 @@ function product_star_rating($product_id){
 		<i class="fa fa-star" aria-hidden="true"></i>
 	<?php
 	}
+}
+
+/**
+ * Override Laravel's asset helper to work with root-level access
+ */
+if (!function_exists('root_asset')) {
+    function root_asset($path) {
+        // Remove leading slash if present
+        $path = ltrim($path, '/');
+        
+        // Return root-level URL (will be redirected to public folder by .htaccess)
+        return url($path);
+    }
+}
+
+/**
+ * Storage asset helper for root-level access
+ */
+if (!function_exists('storage_asset')) {
+    function storage_asset($path) {
+        // Remove leading slash if present
+        $path = ltrim($path, '/');
+        
+        // Return storage URL at root level
+        return url('storage/' . $path);
+    }
+}
+
+/**
+ * Override default asset function to use root-level paths
+ */
+if (!function_exists('public_asset')) {
+    function public_asset($path) {
+        return root_asset($path);
+    }
 }
 
 ?>

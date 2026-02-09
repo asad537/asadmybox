@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple CSS Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-box { 
+            background: #f0f0f0; 
+            padding: 20px; 
+            margin: 10px 0; 
+            border: 1px solid #ccc; 
+        }
+        .success { background: #d4edda; border-color: #c3e6cb; }
+        .error { background: #f8d7da; border-color: #f5c6cb; }
+    </style>
+</head>
+<body>
+    <h1>CSS Loading Test</h1>
+    
+    <div class="test-box">
+        <h2>Testing Different CSS Paths:</h2>
+        
+        <!-- Test 1: Direct CSS path -->
+        <div id="test1" class="test-box">
+            <h3>Test 1: /css/app.css</h3>
+            <link rel="stylesheet" href="/css/app.css" id="css1">
+            <p>Status: <span id="status1">Loading...</span></p>
+        </div>
+        
+        <!-- Test 2: Public CSS path -->
+        <div id="test2" class="test-box">
+            <h3>Test 2: /public/css/app.css</h3>
+            <link rel="stylesheet" href="/public/css/app.css" id="css2">
+            <p>Status: <span id="status2">Loading...</span></p>
+        </div>
+        
+        <!-- Test 3: Relative CSS path -->
+        <div id="test3" class="test-box">
+            <h3>Test 3: css/app.css</h3>
+            <link rel="stylesheet" href="css/app.css" id="css3">
+            <p>Status: <span id="status3">Loading...</span></p>
+        </div>
+        
+        <!-- Test 4: Style.css -->
+        <div id="test4" class="test-box">
+            <h3>Test 4: /css/style.css</h3>
+            <link rel="stylesheet" href="/css/style.css" id="css4">
+            <p>Status: <span id="status4">Loading...</span></p>
+        </div>
+    </div>
+    
+    <div class="test-box">
+        <h2>Manual URL Tests:</h2>
+        <p>Try these URLs directly in browser:</p>
+        <ul>
+            <li><a href="/css/app.css" target="_blank">/css/app.css</a></li>
+            <li><a href="/public/css/app.css" target="_blank">/public/css/app.css</a></li>
+            <li><a href="css/app.css" target="_blank">css/app.css</a></li>
+            <li><a href="/css/style.css" target="_blank">/css/style.css</a></li>
+        </ul>
+    </div>
+
+    <script>
+        // Test CSS loading
+        function testCSS(id, linkId) {
+            const link = document.getElementById(linkId);
+            const status = document.getElementById('status' + id);
+            const testBox = document.getElementById('test' + id);
+            
+            link.onload = function() {
+                status.textContent = 'SUCCESS - CSS Loaded!';
+                status.style.color = 'green';
+                testBox.classList.add('success');
+                console.log('CSS loaded successfully:', link.href);
+            };
+            
+            link.onerror = function() {
+                status.textContent = 'ERROR - CSS Failed to Load';
+                status.style.color = 'red';
+                testBox.classList.add('error');
+                console.log('CSS failed to load:', link.href);
+            };
+            
+            // Timeout test
+            setTimeout(() => {
+                if (status.textContent === 'Loading...') {
+                    status.textContent = 'TIMEOUT - CSS did not load';
+                    status.style.color = 'orange';
+                    testBox.classList.add('error');
+                }
+            }, 5000);
+        }
+        
+        // Run tests
+        testCSS(1, 'css1');
+        testCSS(2, 'css2');
+        testCSS(3, 'css3');
+        testCSS(4, 'css4');
+        
+        // Log all attempts
+        console.log('CSS Test started');
+        console.log('Current URL:', window.location.href);
+        console.log('Base URL:', window.location.origin);
+    </script>
+</body>
+</html>

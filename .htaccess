@@ -1,12 +1,72 @@
-<IfModule mod_rewrite.c>
-    # Allow Googlebot
-    RewriteCond %{HTTP_USER_AGENT} (googlebot|Googlebot|Google-InspectionTool|bingbot|Bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|facebookexternalhit|Twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator|whatsapp|flipboard|tumblr|bitlybot|SkypeUriPreview|nuzzel|Discordbot|Google\ Page\ Speed|Qwantify|pinterestbot|bitrix\ link\ preview|XING-contenttabreceiver|Chrome-Lighthouse|Applebot) [NC]
-    RewriteRule .* - [E=no-gzip:1]
-</IfModule>
-
-# Generated .htaccess - Redirect mappings
+# Main RewriteEngine - Only one instance
 RewriteEngine On
-# Recommended: place this in the site's document root .htaccess
+
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Force www
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Set proper MIME types and headers for CSS files
+<FilesMatch "\.css$">
+    Header set Content-Type "text/css; charset=utf-8"
+    Header unset Cache-Control
+    Header set Cache-Control "public, max-age=3600"
+</FilesMatch>
+
+# Set proper MIME types for JS files
+<FilesMatch "\.js$">
+    Header set Content-Type "application/javascript; charset=utf-8"
+    Header unset Cache-Control
+    Header set Cache-Control "public, max-age=3600"
+</FilesMatch>
+
+# PRIORITY: Specific fix for app.css (handle first to avoid conflicts)
+RewriteCond %{REQUEST_URI} ^/css/app\.css$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^css/app\.css$ serve_css.php?file=app.css [L,E=CSS_SERVED:1]
+
+# CSS files - general handling (after specific app.css rule)
+RewriteCond %{REQUEST_URI} ^/css/(.+)\.css$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^css/(.+)\.css$ serve_css.php?file=$1.css [L,E=CSS_SERVED:1]
+
+# JS files - specific handling
+RewriteCond %{REQUEST_URI} ^/js/(.+)\.js$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^js/(.+)\.js$ public/js/$1.js [L]
+
+# Box Assets folder - CSS, JS, Images (Priority - handle first)
+RewriteCond %{REQUEST_URI} ^/box_assets/(.*)$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^box_assets/(.*)$ public/box_assets/$1 [L]
+
+# Assets folder - CSS, JS, Images
+RewriteCond %{REQUEST_URI} ^/assets/(.*)$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^assets/(.*)$ public/assets/$1 [L]
+
+# Images and other static files
+RewriteCond %{REQUEST_URI} ^/(images|fonts|storage)/(.*)$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(images|fonts|storage)/(.*)$ public/$1/$2 [L]
+
+# Handle common asset files at root level
+RewriteCond %{REQUEST_URI} ^/(favicon\.ico|robots\.txt|sitemap\.xml|logo\.png|mbp\.png|.*\.svg|.*\.webp)$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ public/$1 [L]
+
+# Remove index.php from URL
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/index\.php [NC]
+RewriteRule ^index\.php(.*)$ $1 [R=301,L]
+
+# Laravel routing (only if file doesn't exist and not an asset)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|webp|pdf)$ [NC]
+RewriteRule ^(.*)$ index.php?$1 [QSA,L]
 
 Redirect 301 /how-to-make-a-screen-for-screen-printing/ https://www.myboxprinting.com/blog/how-to-make-a-screen-for-screen-printing/
 Redirect 301 /how-many-cigarettes-are-in-a-pack/ https://www.myboxprinting.com/blog/how-many-cigarettes-are-in-a-pack/
@@ -315,42 +375,13 @@ Redirect 301 /dist/css/style.css https://www.myboxprinting.com
 Redirect 301 /dist/css/bootstrap.css https://www.myboxprinting.com
 Redirect 301 /dist/css/jquery.bxslider.css https://www.myboxprinting.com
 
-RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/index\.php [NC]
-RewriteRule ^index\.php(.*)$ $1 [R=301,L]
-
-# Ensure index.php is not required in URLs
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php?$1 [QSA,L]
-
+# Allow Googlebot (moved to end to avoid conflicts)
 <IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
-    </IfModule>
-
-    RewriteEngine On
-
-    # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
-
-RewriteEngine on
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
-RewriteEngine On
-RewriteCond %{HTTP_HOST} !=""
-RewriteCond %{HTTP_HOST} !^www\. [NC]
-RewriteCond %{HTTPS}s ^on(s)|
-RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-  # Exclude robots.txt from rewrites
+    RewriteCond %{HTTP_USER_AGENT} (googlebot|Googlebot|Google-InspectionTool|bingbot|Bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|facebookexternalhit|Twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator|whatsapp|flipboard|tumblr|bitlybot|SkypeUriPreview|nuzzel|Discordbot|Google\ Page\ Speed|Qwantify|pinterestbot|bitrix\ link\ preview|XING-contenttabreceiver|Chrome-Lighthouse|Applebot) [NC]
+    RewriteRule .* - [E=no-gzip:1]
+</IfModule>QUEST_URI} [R=301,L]
+    # Exclude robots.txt from rewrites
     RewriteRule ^robots\.txt$ - [L]
-
-
-
-RewriteCond %{REQUEST_URI} !(/$|\.) 
-RewriteRule (.*) %{REQUEST_URI}/ [R=301,L] 
-
 
     # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
@@ -462,9 +493,9 @@ RewriteRule (.*) %{REQUEST_URI}/ [R=301,L]
 </IfModule>
 
 <IfModule mod_headers.c>
-    # Explicitly set Cache-Control for static assets
+    # Explicitly set Cache-Control for static assets (reduced for debugging)
     <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|webp|js|css|swf|x-html|css|xml|js|woff|woff2|ttf|svg|eot)$">
-        Header set Cache-Control "max-age=31536000, public"
+        Header set Cache-Control "max-age=3600, public"
     </FilesMatch>
     # Disable caching for HTML files
     <FilesMatch "\.(html|htm|php)$">

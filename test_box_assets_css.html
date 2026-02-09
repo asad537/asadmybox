@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Assets CSS Test</title>
+    
+    <!-- Test box_assets CSS loading -->
+    <link rel="stylesheet" href="/box_assets/css/2bootstrap.min.css">
+    <link rel="stylesheet" href="/box_assets/css/mbpmain.min.css">
+    <link rel="stylesheet" href="/box_assets/css/animate.min.css">
+    
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .test-box {
+            background: #f0f0f0;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Box Assets CSS Loading Test</h1>
+    
+    <div class="test-box">
+        <h2>Test 1: Bootstrap CSS</h2>
+        <p>If Bootstrap is loaded, this should have proper spacing and typography.</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">Column 1</div>
+                <div class="col-md-6">Column 2</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-box">
+        <h2>Test 2: Animation CSS</h2>
+        <p class="animate__animated animate__bounce">This text should bounce if animate.css is loaded</p>
+    </div>
+    
+    <div class="test-box">
+        <h2>Test 3: Main CSS</h2>
+        <p>Check browser console for any CSS loading errors.</p>
+    </div>
+    
+    <div class="test-box">
+        <h2>CSS Files Being Tested:</h2>
+        <ul>
+            <li>/box_assets/css/2bootstrap.min.css</li>
+            <li>/box_assets/css/mbpmain.min.css</li>
+            <li>/box_assets/css/animate.min.css</li>
+        </ul>
+    </div>
+    
+    <script>
+        // Check if CSS files loaded
+        window.addEventListener('load', function() {
+            const links = document.querySelectorAll('link[rel="stylesheet"]');
+            console.log('CSS Files Status:');
+            links.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href.includes('box_assets')) {
+                    // Try to check if the stylesheet loaded
+                    fetch(href, { method: 'HEAD' })
+                        .then(response => {
+                            if (response.ok) {
+                                console.log('✓ Loaded:', href);
+                            } else {
+                                console.error('✗ Failed:', href, response.status);
+                            }
+                        })
+                        .catch(error => {
+                            console.error('✗ Error loading:', href, error);
+                        });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

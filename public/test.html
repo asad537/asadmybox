@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asset Test - Root Level Access</title>
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/assets/css/product.css">
+</head>
+<body>
+    <h1>Testing CSS and Images from Root Level</h1>
+    
+    <!-- Test different asset paths -->
+    <h2>Images Test:</h2>
+    <img src="/images/logo.png" alt="Logo" style="max-width: 200px;">
+    <img src="/assets/img/logo1.jpg" alt="Logo 1" style="max-width: 200px;">
+    <img src="/public/images/logo.png" alt="Public Logo" style="max-width: 200px;">
+    
+    <h2>CSS Test:</h2>
+    <p>If CSS is loading, this should be styled.</p>
+    
+    <h2>Storage Test:</h2>
+    <img src="/storage/test-image.jpg" alt="Storage Image" style="max-width: 200px;">
+    
+    <script src="/js/app.js"></script>
+    <script src="/assets/js/main.js"></script>
+    
+    <script>
+        console.log('Testing asset loading...');
+        
+        // Test CSS loading
+        const cssLink = document.querySelector('link[href="/css/app.css"]');
+        if (cssLink) {
+            cssLink.onload = () => console.log('CSS loaded successfully');
+            cssLink.onerror = () => console.log('CSS failed to load');
+        }
+        
+        // Test image loading
+        const images = document.querySelectorAll('img');
+        images.forEach((img, index) => {
+            img.onload = () => console.log(`Image ${index + 1} loaded: ${img.src}`);
+            img.onerror = () => console.log(`Image ${index + 1} failed: ${img.src}`);
+        });
+    </script>
+</body>
+</html>

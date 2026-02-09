@@ -224,15 +224,16 @@
     </script>
     
  <script>
-     // Defer Custom Select Logic until window load to unblock main thread during critical rendering
-     window.addEventListener('load', function() {
-         setTimeout(function() {
+     // Initialize Custom Select Logic on DOMContentLoaded for faster interactivity
+     document.addEventListener('DOMContentLoaded', function() {
              var x, i, j, l, ll, selElmnt, a, b, c;
             /*look for any elements with the class "custom-select":*/
             x = document.getElementsByClassName("custom-select");
             l = x.length;
     for (i = 0; i < l; i++) {
       selElmnt = x[i].getElementsByTagName("select")[0];
+      if (!selElmnt) continue; // Skip if no select found
+      if (x[i].getElementsByClassName("select-selected").length > 0) continue; // Skip if already initialized
       ll = selElmnt.length;
       /*for each element, create a new DIV that will act as the selected item:*/
       a = document.createElement("DIV");
@@ -307,7 +308,6 @@
     /*if the user clicks anywhere outside the select box,
     then close all select boxes:*/
     document.addEventListener("click", closeAllSelect);
-         }, 1000); // 1 second delay after window load
      });
  </script>
  
