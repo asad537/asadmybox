@@ -78,6 +78,21 @@ class LeadsController extends Controller
     {
         $startDate = $request->start_date ? \Carbon\Carbon::parse($request->start_date) : \Carbon\Carbon::today();
         $endDate = $request->end_date ? \Carbon\Carbon::parse($request->end_date) : \Carbon\Carbon::today();
+        
+        // Initialize dailyData with all dates in the range
+        $dailyData = [];
+        $iterDate = $startDate->clone()->startOfDay();
+        $iterEndDate = $endDate->clone()->startOfDay();
+
+        while ($iterDate->lte($iterEndDate)) {
+            $dateStr = $iterDate->format('Y-m-d');
+            $dailyData[$dateStr] = [
+                'Queries' => 0, 'New' => 0, 'Retrine' => 0, 'Spam' => 0,
+                'Order Done' => 0, 'Replied' => 0, 'Read' => 0, 'Unread' => 0
+            ];
+            $iterDate->addDay();
+        }
+
         $endDate->setTime(23, 59, 59);
 
         // Fetch all emails (including spam)
@@ -86,7 +101,6 @@ class LeadsController extends Controller
                           ->orderBy('created_at', 'asc')
                           ->get();
 
-        $dailyData = [];
         $totals = [
             'Queries' => 0, 'New' => 0, 'Retrine' => 0, 'Spam' => 0,
             'Order Done' => 0, 'Replied' => 0, 'Read' => 0, 'Unread' => 0
@@ -94,6 +108,7 @@ class LeadsController extends Controller
 
         foreach ($emails as $email) {
             $date = $email->created_at->format('Y-m-d');
+            
             if (!isset($dailyData[$date])) {
                 $dailyData[$date] = [
                     'Queries' => 0, 'New' => 0, 'Retrine' => 0, 'Spam' => 0,
@@ -118,6 +133,7 @@ class LeadsController extends Controller
             elseif ($email->status == 'New') { $dailyData[$date]['Unread']++; $totals['Unread']++; }
 
             // Customer Type (New vs Retrine)
+            // Note: customer_type is an accessor in CrmEmail model
             if ($email->customer_type == 'RC') {
                 $dailyData[$date]['Retrine']++;
                 $totals['Retrine']++;
