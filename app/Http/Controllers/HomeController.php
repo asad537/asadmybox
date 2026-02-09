@@ -2854,10 +2854,32 @@ public function location()
             
             // Verify with Google
             $secretKey = env('RECAPTCHA_SECRET_KEY');
-            $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $recaptchaResponse);
+            
+            // Use cURL instead of file_get_contents for better SSL handling
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, 'https://www.google.com/recaptcha/api/siteverify');
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
+                'secret' => $secretKey,
+                'response' => $recaptchaResponse
+            ]));
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+            
+            $verifyResponse = curl_exec($ch);
+            $curlError = curl_error($ch);
+            curl_close($ch);
+            
+            if ($verifyResponse === false) {
+                Session::flash('message_for_kit', 'Unable to verify reCAPTCHA. Please try again later.');
+                \Log::error('reCAPTCHA cURL error: ' . $curlError);
+                return redirect()->back()->withInput();
+            }
+            
             $responseData = json_decode($verifyResponse);
             
-            if (!$responseData->success) {
+            if (!$responseData || !$responseData->success) {
                 Session::flash('message_for_kit', 'reCAPTCHA verification failed. Please try again.');
                 return redirect()->back()->withInput();
             }
@@ -4113,10 +4135,32 @@ public function location()
                     
                     // Verify with Google
                     $secretKey = env('RECAPTCHA_SECRET_KEY');
-                    $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $recaptchaResponse);
+                    
+                    // Use cURL instead of file_get_contents for better SSL handling
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, 'https://www.google.com/recaptcha/api/siteverify');
+                    curl_setopt($ch, CURLOPT_POST, true);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
+                        'secret' => $secretKey,
+                        'response' => $recaptchaResponse
+                    ]));
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+                    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+                    
+                    $verifyResponse = curl_exec($ch);
+                    $curlError = curl_error($ch);
+                    curl_close($ch);
+                    
+                    if ($verifyResponse === false) {
+                        Session::flash('message', 'Unable to verify reCAPTCHA. Please try again later.');
+                        \Log::error('reCAPTCHA cURL error: ' . $curlError);
+                        return redirect()->back()->withInput();
+                    }
+                    
                     $responseData = json_decode($verifyResponse);
                     
-                    if (!$responseData->success) {
+                    if (!$responseData || !$responseData->success) {
                         Session::flash('message', 'reCAPTCHA verification failed. Please try again.');
                         return redirect()->back()->withInput();
                     }
@@ -4663,10 +4707,32 @@ public function location()
                 
                 // Verify with Google
                 $secretKey = env('RECAPTCHA_SECRET_KEY');
-                $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $recaptchaResponse);
+                
+                // Use cURL instead of file_get_contents for better SSL handling
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, 'https://www.google.com/recaptcha/api/siteverify');
+                curl_setopt($ch, CURLOPT_POST, true);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
+                    'secret' => $secretKey,
+                    'response' => $recaptchaResponse
+                ]));
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+                curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+                
+                $verifyResponse = curl_exec($ch);
+                $curlError = curl_error($ch);
+                curl_close($ch);
+                
+                if ($verifyResponse === false) {
+                    Session::flash('message', 'Unable to verify reCAPTCHA. Please try again later.');
+                    \Log::error('reCAPTCHA cURL error: ' . $curlError);
+                    return redirect()->back()->withInput();
+                }
+                
                 $responseData = json_decode($verifyResponse);
                 
-                if (!$responseData->success) {
+                if (!$responseData || !$responseData->success) {
                     Session::flash('message', 'reCAPTCHA verification failed. Please try again.');
                     return redirect()->back()->withInput();
                 }
