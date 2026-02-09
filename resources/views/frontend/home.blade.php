@@ -117,9 +117,9 @@
                 </div>
 
                 <div class="text-center mb-4">
-                    <h1 style="font-size: 28px; font-weight: 700; color: #2c2c2c; margin-bottom: 15px; line-height: 1.2;">
+                    <h2 style="font-size: 28px; font-weight: 700; color: #2c2c2c; margin-bottom: 15px; line-height: 1.2;">
                         {{$our_home_slider[0]->mini_title}}
-                    </h1>
+                    </h2>
                     <p style="font-size: 17px; color: #4d4b4bff; margin-bottom: 25px; line-height: 1.5; padding: 0 10px;">
                         {{$our_home_slider[0]->slider_description}}
                     </p>
@@ -968,10 +968,10 @@
             
             <div id="section">
   <div class="article">
-    <h1 style="font-size:24px;">
+    <h2 style="font-size:24px;">
      Order Custom Boxes, Custom Packaging & Shipping Boxes At Wholesale Rates
 
-    </h1>
+    </h2>
    <p style="text-align:justify;color:black;">
         Do you have a business? Big or small doesn’t matter!
 
