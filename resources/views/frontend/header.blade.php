@@ -102,7 +102,36 @@
     
     <!-- Inline Critical CSS for Above-the-Fold Content -->
     <style>
-    *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.5;text-rendering:optimizeLegibility;overflow-x:hidden;contain:layout style paint}html{scroll-behavior:smooth}.header-main{min-height:70px;background:#fff;position:relative;contain:layout}.logo{min-height:60px;display:flex!important;align-items:center;visibility:visible!important;opacity:1!important;contain:layout}.logo img{max-width:300px;height:auto;display:block!important;visibility:visible!important;will-change:auto}.hero-section{background:linear-gradient(135deg,#c6d8b7ff 0%,#e8e8e8 100%);min-height:500px;contain:layout style}.hero-title{font-size:32px;font-weight:700;color:#2c2c2c;line-height:1.3;contain:layout}.hero-subtitle{font-size:18px;color:#4d4b4bff;line-height:1.6;contain:layout}.hero-btn{display:inline-block;padding:12px 30px;background-color:#86C342;color:#fff!important;font-size:16px;font-weight:600;border-radius:5px;text-decoration:none;transition:all .3s ease;will-change:transform}@media (max-width:767px){.header-main{min-height:60px}.logo img{max-width:280px;width:auto;height:auto;max-height:60px}.hero-section{display:none!important}.hero-section-mobile{display:block!important;padding:30px 0!important}.hero-title{font-size:24px!important}.hero-subtitle{font-size:15px!important}.hide-on-mobile{display:none!important}.cp-services-area{padding-top:20px!important;margin-top:0!important}.hero-image-content{min-height:auto!important}.logos-wrapper{gap:15px!important}}@media (min-width:768px){.hero-section-mobile{display:none!important}}img{max-width:100%;height:auto;content-visibility:auto;contain:layout}img[loading="lazy"]{content-visibility:auto}.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto;contain:layout}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}.row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px;contain:layout}.col-6,.col-lg-6,.col-md-12{position:relative;width:100%;padding-right:15px;padding-left:15px}.col-6{flex:0 0 50%;max-width:50%}@media (min-width:768px){.col-md-12{flex:0 0 100%;max-width:100%}}@media (min-width:992px){.col-lg-6{flex:0 0 50%;max-width:50%}}.text-center{text-align:center!important}.mb-4{margin-bottom:1.5rem!important}.mt-40{margin-top:40px!important}.container-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.d-none{display:none!important}.d-lg-none{display:block!important}@media (min-width:992px){.d-lg-none{display:none!important}}
+    /* Ultra-minimal critical CSS for instant render */
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:system-ui,-apple-system,sans-serif;line-height:1.5;overflow-x:hidden}
+    .header-main{min-height:60px;background:#fff}
+    .logo{min-height:60px;display:flex!important;align-items:center}
+    .logo img{max-width:280px;height:auto;display:block!important}
+    .hero-section{background:linear-gradient(135deg,#c6d8b7ff,#e8e8e8);min-height:400px}
+    .hero-section-mobile{background:linear-gradient(135deg,#c6d8b7ff,#e8e8e8);padding:30px 0}
+    .hero-title{font-size:24px;font-weight:700;color:#2c2c2c;line-height:1.2}
+    .hero-subtitle{font-size:15px;color:#4d4b4b;line-height:1.5}
+    .hero-btn{display:inline-block;padding:12px 30px;background:#86C342;color:#fff!important;font-size:16px;font-weight:600;border-radius:5px;text-decoration:none}
+    img{max-width:100%;height:auto}
+    .container{width:100%;padding:0 15px;margin:0 auto}
+    .text-center{text-align:center}
+    .mb-4{margin-bottom:1.5rem}
+    .d-lg-none{display:block}
+    @media (max-width:767px){
+        .hero-section{display:none!important}
+        .hide-on-mobile{display:none!important}
+    }
+    @media (min-width:768px){
+        .hero-section-mobile{display:none!important}
+        .d-lg-none{display:none}
+    }
+    @media (min-width:992px){
+        .container{max-width:960px}
+    }
+    @media (min-width:1200px){
+        .container{max-width:1140px}
+    }
     </style>
     <style>
     /*! MeanMenu 2.0.7 */
@@ -113,16 +142,25 @@
     </style>
     
    <!-- CSS here -->
+   @if(Request::is('/'))
+   <!-- Home page: Inline critical CSS only, load rest async -->
+   @foreach ($criticalStyles as $href)
+       <link rel="preload" as="style" href="{{ $href }}" onload="this.onload=null;this.rel='stylesheet'">
+       <noscript><link rel="stylesheet" href="{{ $href }}"></noscript>
+   @endforeach
+   @else
+   <!-- Other pages: Normal loading -->
    @foreach ($criticalStyles as $href)
        <link rel="stylesheet" href="{{ $href }}">
    @endforeach
+   @endif
+   
    @foreach ($nonCriticalStyles as $href)
        <link rel="preload" as="style" href="{{ $href }}" onload="this.onload=null;this.rel='stylesheet'">
        <noscript><link rel="stylesheet" href="{{ $href }}"></noscript>
    @endforeach
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <!-- Preload critical fonts with font-display swap -->
+   
+   <!-- Fonts: Load async with font-display swap -->
    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
    
@@ -139,8 +177,6 @@
 
    <link rel="shortcut icon" type="image/x-icon" href="{{url('mbp.png')}}">
    
-   <!-- Preload Font Awesome for faster icon rendering -->
-   <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css">
    <!-- Google Tag Manager - Delayed until window load for performance -->
 <script>
 // Only load GTM after window load to prevent blocking LCP/FCP
