@@ -143,18 +143,21 @@
     .logo img{max-width:280px;height:auto;display:block}
     .hero-btn{display:inline-block;padding:12px 30px;background-color:#86C342;color:#fff!important;font-size:16px;font-weight:600;border-radius:5px;text-decoration:none}
     
-    /* Hide menu list before CSS/JS loads to prevent FOUC list */
-    .main-menu, .main-menu ul, .sub-menu { display: none; }
+    /* Hide menus and off-canvas elements before CSS/JS loads to prevent FOUC */
+    .main-menu, .main-menu ul, .sub-menu, 
+    .side-info, #offcanvas-menu, .fix,
+    .mobile-menu, .offset-widget { 
+        display: none !important; 
+    }
     
     @media (max-width:767px){
-        .header-main{min-height:60px;padding:5px 0}
-        .logo img{max-width:240px}
+        .header-main{min-height:60px;padding:5px 0;background:#fff;z-index:9999}
+        .logo img{max-width:240px;height:auto;display:block}
         .hero-section{display:none!important}
-        .hero-section-mobile{display:block!important;padding:20px 0;background:linear-gradient(135deg,#c6d8b7 0%,#e8e8e8 100%)}
-        .hero-title{font-size:24px;font-weight:700;margin-bottom:10px;text-align:center}
-        .hero-subtitle{font-size:15px;text-align:center;margin-bottom:20px}
+        .hero-section-mobile{display:block!important;padding:20px 0;background:linear-gradient(135deg,#c6d8b7 0%,#e8e8e8 100%);min-height:300px}
+        .hero-title{font-size:24px;font-weight:700;margin-bottom:10px;text-align:center;color:#2c2c2c}
+        .hero-subtitle{font-size:15px;text-align:center;margin-bottom:20px;color:#4d4b4b}
         .hide-on-mobile{display:none!important}
-        .menu-bar{display:block}
         .cp-header-btn{display:none}
     }
     @media (min-width:768px){
