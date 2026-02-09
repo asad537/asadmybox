@@ -15,6 +15,46 @@ use Cart;
 class HomeController extends Controller
 {
 
+    /**
+     * Verify reCAPTCHA using cURL (more reliable than file_get_contents)
+     * 
+     * @param string $recaptchaResponse
+     * @return bool
+     */
+    private function verifyRecaptcha($recaptchaResponse)
+    {
+        if (empty($recaptchaResponse)) {
+            return false;
+        }
+        
+        $secretKey = env('RECAPTCHA_SECRET_KEY');
+        $verifyUrl = 'https://www.google.com/recaptcha/api/siteverify';
+        
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $verifyUrl);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
+            'secret' => $secretKey,
+            'response' => $recaptchaResponse
+        ]));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        
+        $verifyResponse = curl_exec($ch);
+        $curlError = curl_error($ch);
+        curl_close($ch);
+        
+        if ($curlError) {
+            \Log::error('reCAPTCHA cURL Error: ' . $curlError);
+            return false;
+        }
+        
+        $responseData = json_decode($verifyResponse);
+        
+        return $responseData && isset($responseData->success) && $responseData->success === true;
+    }
+
 
     public function __construct()
     {
@@ -533,12 +573,8 @@ class HomeController extends Controller
                 return redirect()->back()->withInput();
             }
             
-            // Verify with Google
-            $secretKey = env('RECAPTCHA_SECRET_KEY');
-            $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $recaptchaResponse);
-            $responseData = json_decode($verifyResponse);
-            
-            if (!$responseData->success) {
+            // Verify reCAPTCHA
+            if (!$this->verifyRecaptcha($recaptchaResponse)) {
                 Session::flash('message', 'reCAPTCHA verification failed. Please try again.');
                 return redirect()->back()->withInput();
             }
@@ -3235,12 +3271,8 @@ public function location()
                 return redirect()->back()->withInput();
             }
             
-            // Verify with Google
-            $secretKey = env('RECAPTCHA_SECRET_KEY');
-            $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $recaptchaResponse);
-            $responseData = json_decode($verifyResponse);
-            
-            if (!$responseData->success) {
+            // Verify reCAPTCHA
+            if (!$this->verifyRecaptcha($recaptchaResponse)) {
                 Session::flash('message', 'reCAPTCHA verification failed. Please try again.');
                 return redirect()->back()->withInput();
             }
@@ -3488,12 +3520,8 @@ public function location()
                 return redirect()->back()->withInput();
             }
             
-            // Verify with Google
-            $secretKey = env('RECAPTCHA_SECRET_KEY');
-            $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $recaptchaResponse);
-            $responseData = json_decode($verifyResponse);
-            
-            if (!$responseData->success) {
+            // Verify reCAPTCHA
+            if (!$this->verifyRecaptcha($recaptchaResponse)) {
                 Session::flash('message', 'reCAPTCHA verification failed. Please try again.');
                 return redirect()->back()->withInput();
             }
@@ -3626,12 +3654,8 @@ public function location()
                 return redirect()->back()->withInput();
             }
             
-            // Verify with Google
-            $secretKey = env('RECAPTCHA_SECRET_KEY');
-            $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $recaptchaResponse);
-            $responseData = json_decode($verifyResponse);
-            
-            if (!$responseData->success) {
+            // Verify reCAPTCHA
+            if (!$this->verifyRecaptcha($recaptchaResponse)) {
                 Session::flash('message', 'reCAPTCHA verification failed. Please try again.');
                 return redirect()->back()->withInput();
             }
