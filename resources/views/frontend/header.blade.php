@@ -60,7 +60,10 @@
        <!-- Preload blog featured image for mobile only -->
        <link rel="preload" as="image" href="{{ asset('images/blog/'.$blogFeaturedImage) }}" fetchpriority="high" media="(max-width: 768px)">
    @elseif(isset($our_home_slider) && isset($our_home_slider[0]))
-       <link rel="preload" as="image" href="{{ url('images') . '/' . $our_home_slider[0]->slider_banner }}" fetchpriority="high">
+       <!-- Preload WebP for mobile -->
+       <link rel="preload" as="image" href="{{ url('images/custom-boxes-and-packaging-myboxprinting.webp') }}" fetchpriority="high" media="(max-width: 480px)">
+       <!-- Preload original banner for larger screens -->
+       <link rel="preload" as="image" href="{{ url('images') . '/' . $our_home_slider[0]->slider_banner }}" fetchpriority="high" media="(min-width: 481px)">
    @else
        <link rel="preload" as="image" href="{{ url('MBP-custom-boxes.webp') }}" fetchpriority="high">
    @endif
@@ -79,11 +82,13 @@
            ? time()
            : (file_exists($mbpMainPath) ? filemtime($mbpMainPath) : '');
        $mbpMainHref = url('box_assets/css/mbpmain.min.css') . ($mbpMainVersion ? '?v=' . $mbpMainVersion : '');
-       $criticalStyles = [
+       
+       // Optimization: Defer heavy CSS files since we have inline critical CSS
+       $criticalStyles = [];
+       
+       $nonCriticalStyles = [
            url('box_assets/css/2bootstrap.min.css'),
            $mbpMainHref,
-       ];
-       $nonCriticalStyles = [
            'https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css',
            url('box_assets/css/preloader.css'),
            url('box_assets/css/animate.min.css'),
@@ -120,8 +125,7 @@
        <link rel="preload" as="style" href="{{ $href }}" onload="this.onload=null;this.rel='stylesheet'">
        <noscript><link rel="stylesheet" href="{{ $href }}"></noscript>
    @endforeach
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
    <!-- Preload critical fonts with font-display swap -->
    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
@@ -133,14 +137,9 @@
        font-display: swap;
    }
    </style>
-   <!-- Dynamic LCP image preloading removed from here -->
-
-
 
    <link rel="shortcut icon" type="image/x-icon" href="{{url('mbp.png')}}">
    
-   <!-- Preload Font Awesome for faster icon rendering -->
-   <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css">
    <!-- Google Tag Manager - Delayed until window load for performance -->
 <script>
 // Only load GTM after window load to prevent blocking LCP/FCP
