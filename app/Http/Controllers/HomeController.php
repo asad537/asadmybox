@@ -2928,12 +2928,34 @@ public function location()
                 return redirect()->back()->withInput();
             }
             
-            // Verify with Google
+            // Verify with Google using cURL (more reliable than file_get_contents)
             $secretKey = env('RECAPTCHA_SECRET_KEY');
-            $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $recaptchaResponse);
+            $verifyUrl = 'https://www.google.com/recaptcha/api/siteverify';
+            
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $verifyUrl);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
+                'secret' => $secretKey,
+                'response' => $recaptchaResponse
+            ]));
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+            
+            $verifyResponse = curl_exec($ch);
+            $curlError = curl_error($ch);
+            curl_close($ch);
+            
+            if ($curlError) {
+                \Log::error('reCAPTCHA cURL Error: ' . $curlError);
+                Session::flash('message', 'Unable to verify reCAPTCHA. Please try again.');
+                return redirect()->back()->withInput();
+            }
+            
             $responseData = json_decode($verifyResponse);
             
-            if (!$responseData->success) {
+            if (!$responseData || !$responseData->success) {
                 Session::flash('message', 'reCAPTCHA verification failed. Please try again.');
                 return redirect()->back()->withInput();
             }
