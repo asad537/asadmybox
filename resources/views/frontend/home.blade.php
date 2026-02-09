@@ -85,11 +85,11 @@
                 <div class="col-lg-6 col-md-12" style="padding: 0;">
                     <div class="hero-image-content" style="position: relative; width: 100%; min-height: 500px; display: flex; align-items: center; justify-content: center;">
                         <picture>
-                            <!-- Mobile optimized image (smaller size) -->
-                            <source media="(max-width: 767px)" 
+                            <!-- Mobile optimized image (smallest) -->
+                            <source media="(max-width: 480px)" 
                                     srcset="{{ url('images/custom-boxes-and-packaging-myboxprinting.webp') }}" 
-                                    width="600" 
-                                    height="375">
+                                    width="480" 
+                                    height="300">
                             <!-- Tablet -->
                             <source media="(max-width: 991px)" 
                                     srcset="{{ url('images') . '/' . $our_home_slider[0]->slider_banner }}" 
@@ -103,33 +103,35 @@
                                  height="500"
                                  fetchpriority="high"
                                  loading="eager"
-                                 decoding="async"
-                                 style="width: 100%; height: auto; object-fit: contain; max-height: 500px;">
+                                 decoding="sync"
+                                 importance="high"
+                                 style="width: 100%; height: auto; object-fit: contain; max-height: 500px; contain: layout;">
                         </picture>
                     </div>
                 </div>
             </div>
         </section>
         
-        <section class="hero-section-mobile d-lg-none" style="background: linear-gradient(135deg, #c6d8b7ff 0%, #e8e8e8 100%); padding: 40px 0;">
+        <section class="hero-section-mobile d-lg-none" style="background: linear-gradient(135deg, #c6d8b7ff 0%, #e8e8e8 100%); padding: 30px 0;">
             <div class="container-fluid" style="padding: 0 10px;">
                 <div class="text-center mb-4">
                     <picture>
                         <!-- Mobile optimized smaller image -->
                         <source media="(max-width: 480px)" 
-                                srcset="{{ url('images') . '/' . $our_home_slider[0]->slider_banner }}" 
+                                srcset="{{ url('images/custom-boxes-and-packaging-myboxprinting.webp') }}" 
                                 width="400" 
                                 height="267">
                         <img src="{{ url('images') . '/' . $our_home_slider[0]->slider_banner }}" 
                              alt="{{$our_home_slider[0]->mini_title}}" 
                              class="img-fluid" 
-                             width="450"
-                             height="300"
+                             width="400"
+                             height="267"
                              fetchpriority="high"
                              loading="eager"
-                             decoding="async"
+                             decoding="sync"
+                             importance="high"
                              sizes="(max-width: 480px) 400px, 450px"
-                             style="width: 100%; max-width: 450px; transform: scale(1.1); margin-bottom: 25px;">
+                             style="width: 100%; max-width: 400px; height: auto; margin-bottom: 20px; contain: layout;">
                     </picture>
                 </div>
 

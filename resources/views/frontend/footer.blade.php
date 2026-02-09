@@ -145,7 +145,34 @@
       </div>
    </footer>
  
-   <!-- Critical scripts but deferred for TBT reduction - dependencies managed via defer order or DOMContentLoaded -->
+   <!-- Optimized script loading for mobile performance -->
+   @if(Request::is('/'))
+   <!-- Home page: Load only essential scripts -->
+   <script>
+   // Inline minimal jQuery functionality for home page
+   window.addEventListener('load', function() {
+       // Load jQuery and essential scripts after page load
+       var scripts = [
+           '{{url("box_assets/js/jquery-3.6.0.min.js")}}',
+           '{{url("box_assets/js/bootstrap.bundle.min.js")}}',
+           '{{url("box_assets/js/meanmenu.js")}}',
+           '{{url("box_assets/js/main.js")}}'
+       ];
+       
+       var loadScript = function(index) {
+           if (index >= scripts.length) return;
+           var script = document.createElement('script');
+           script.src = scripts[index];
+           script.onload = function() { loadScript(index + 1); };
+           document.body.appendChild(script);
+       };
+       
+       // Start loading after 1 second
+       setTimeout(function() { loadScript(0); }, 1000);
+   });
+   </script>
+   @else
+   <!-- Other pages: Load all scripts with defer -->
    <script defer src="{{url('box_assets/js/jquery-3.6.0.min.js')}}"></script>
    <script defer src="{{url('box_assets/js/bootstrap.bundle.min.js')}}"></script>
    
@@ -158,7 +185,6 @@
    @endif
    <script defer src="{{url('box_assets/js/parallax.min.js')}}"></script>
    <script defer src="{{url('box_assets/js/backToTop.js')}}"></script>
-   <!-- <script defer src="{{url('box_assets/js/nice-select.min.js')}}"></script> -->
    <script defer src="{{url('box_assets/js/counterup.min.js')}}"></script>
    <script defer src="{{url('box_assets/js/ajax-form.js')}}"></script>
    @if(!isset($isProductPage) && !isset($isBlogPage))
@@ -177,11 +203,8 @@
    @if(!Request::is('/') && !isset($isProductPage))
    <script defer src="{{url('box_assets/js/jquery.ez-plus.min.js')}}"></script>
    @endif
-   <!-- <script defer src="{{url('box_assets/js/tween-max.js')}}"></script> -->
    <script defer src="{{url('box_assets/js/main.js')}}"></script>
-   
-   <!-- Mobile Performance Optimization Script -->
-   <script defer src="{{url('box_assets/js/mobile-performance.js')}}"></script>
+   @endif
    
  <script>
         // Delay Zendesk until window load to prevent blocking LCP/FCP
