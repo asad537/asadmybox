@@ -55,6 +55,34 @@ class HomeController extends Controller
         return $responseData && isset($responseData->success) && $responseData->success === true;
     }
 
+    /**
+     * Detect if the current request is from a mobile device
+     * 
+     * @return bool
+     */
+    private function isMobileDevice()
+    {
+        $userAgent = request()->header('User-Agent');
+        
+        if (empty($userAgent)) {
+            return false;
+        }
+        
+        $mobileKeywords = [
+            'Mobile', 'Android', 'iPhone', 'iPad', 'iPod', 
+            'BlackBerry', 'Windows Phone', 'Opera Mini', 
+            'IEMobile', 'Mobile Safari'
+        ];
+        
+        foreach ($mobileKeywords as $keyword) {
+            if (stripos($userAgent, $keyword) !== false) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
 
     public function __construct()
     {
@@ -1104,55 +1132,63 @@ public function location()
     }
     public function index()
     {
-        $data = Cache::remember('home_page_data_v1', 60 * 24, function () {
+        // Detect mobile device
+        $isMobile = $this->isMobileDevice();
+        
+        $cacheKey = $isMobile ? 'home_page_data_mobile_v2' : 'home_page_data_desktop_v2';
+        
+        $data = Cache::remember($cacheKey, 60 * 24, function () use ($isMobile) {
             $data = [];
             // Removed duplicate rating_code schema - using business_listing instead
-            $data['clients_feedback']  = DB::table('blogs')->orderBy('time', 'DESC')->orderBy('t_id', 'DESC')->limit(4)->get();
+            $data['clients_feedback']  = DB::table('blogs')->orderBy('time', 'DESC')->orderBy('t_id', 'DESC')->limit($isMobile ? 2 : 4)->get();
             $data['parent_category'] = DB::table('categories')->where('status', '=', '0')->where('parent_cate', '=', '0')->orderBy('id','asc')->get();	
             $data['parent_category_style'] = DB::table('categories')->where('parent_cate', 0)->orderBy('id', 'desc')->limit(1)->get();
             $data['all_subcategory'] = DB::table('categories')->where('status', '=', '0')->get();
             $data['all_products'] = DB::table('products')->get();
-            $data['all_products_get_4'] = DB::table('products')->orderBy('id', 'asc')->limit(12)->get();
-            $data['prom_prod'] = DB::table('products')->leftJoin('categories', 'categories.id', '=', 'products.prod_category')->where('feature_prod', 1)->get();
-            $data['new_arrival']  =  DB::table('products')->where('new_arrival', 1)->limit(4)->get();
+            $data['all_products_get_4'] = DB::table('products')->orderBy('id', 'asc')->limit($isMobile ? 6 : 12)->get();
+            $data['prom_prod'] = DB::table('products')->leftJoin('categories', 'categories.id', '=', 'products.prod_category')->where('feature_prod', 1)->limit($isMobile ? 4 : 8)->get();
+            $data['new_arrival']  =  DB::table('products')->where('new_arrival', 1)->limit($isMobile ? 2 : 4)->get();
             
-            $data['best_seller']  =  DB::table('products')->where('best_seller', 1)->limit(4)->get();
-            $data['feature_prod_home1'] = DB::table('products')->where('best_seller', 1)->limit(8)->get();
-            $data['feature_prod_home11'] = DB::table('products')->where('best_seller', 1)->orderBy('id','desc')->limit(12)->get();
-            $data['feature_prod_home_new_arrival'] = DB::table('products')->where('best_seller', 1)->limit(8)->get();
+            $data['best_seller']  =  DB::table('products')->where('best_seller', 1)->limit($isMobile ? 2 : 4)->get();
+            $data['feature_prod_home1'] = DB::table('products')->where('best_seller', 1)->limit($isMobile ? 4 : 8)->get();
+            $data['feature_prod_home11'] = DB::table('products')->where('best_seller', 1)->orderBy('id','desc')->limit($isMobile ? 6 : 12)->get();
+            $data['feature_prod_home_new_arrival'] = DB::table('products')->where('best_seller', 1)->limit($isMobile ? 4 : 8)->get();
         
             // Pre-load data for blade template to avoid queries in view
-            $data['home_categories'] = DB::table('categories')->where('show_on_home', 1)->limit(6)->get();
+            $data['home_categories'] = DB::table('categories')->where('show_on_home', 1)->limit($isMobile ? 4 : 6)->get();
             $data['home_other_products'] = DB::table('otherproducts')
             ->whereIn('prod_name', ['Decals Printing', 'Business Cards','Tags Printing','Vinyl Banners','Booklets','Brochures'])
-            ->limit(6)
+            ->limit($isMobile ? 4 : 6)
             ->get();
             $data['all_products_for_form'] = DB::table('products')->get();
         
-            $data['feature_prod_home']  =  DB::table('products')->where('feature_prod', 1)->limit(8)->get();
-            $data['feature_prod']  =  DB::table('products')->where('feature_prod', 1)->limit(4)->get();
+            $data['feature_prod_home']  =  DB::table('products')->where('feature_prod', 1)->limit($isMobile ? 4 : 8)->get();
+            $data['feature_prod']  =  DB::table('products')->where('feature_prod', 1)->limit($isMobile ? 2 : 4)->get();
             $data['all_blogs']  = DB::table('blogs')->get();
             $data['parent_cate'] = DB::table('categories')->where('parent_cate', 0)->get();
-            $data['get_sub_cate']=DB::table('categories')->where('parent_cate','!=',0)->limit(6)->get();
+            $data['get_sub_cate']=DB::table('categories')->where('parent_cate','!=',0)->limit($isMobile ? 4 : 6)->get();
             $data['all_subcate'] = DB::table('categories')->get();
-            $data['our_testimonial'] =  DB::table('testimonial')->get();
-            $data['our_video'] =  DB::table('video')->get();
+            $data['our_testimonial'] =  DB::table('testimonial')->limit($isMobile ? 3 : 6)->get();
+            $data['our_video'] =  DB::table('video')->limit($isMobile ? 2 : 4)->get();
             $data['all_boxes'] =  DB::table('box_designs')->get();
             $data['our_socials']  =DB::table('socials_media')->get();
             $data['dynamic_page']  =  DB::table('dynamic_pages')->get();
             $data['why_tcb2']  =  DB::table('dynamic_pages')->where('page_url', 'why-tcb.php')->get();
-            $data['our_blogs']  = DB::table('blogs')->orderBy('time', 'DESC')->orderBy('t_id', 'DESC')->limit(3)->get();
+            $data['our_blogs']  = DB::table('blogs')->orderBy('time', 'DESC')->orderBy('t_id', 'DESC')->limit($isMobile ? 2 : 3)->get();
             $data['all_cardboardprods'] = DB::table('cardboardboxes')->get();
             $data['content']  = DB::table('home_content')->get();
             $data['same_meta']= DB::table('products')->get(); // This line was in original
             $data['same_meta']= DB::table('otherproducts')->get();
-            $data['all_promotions'] = DB::table('promotions')->orderBy('promo_id', 'desc')->limit(6)->get();
+            $data['all_promotions'] = DB::table('promotions')->orderBy('promo_id', 'desc')->limit($isMobile ? 3 : 6)->get();
             
             $data['get_all_customers'] = DB::table("customers")->get();
             $data['our_home_slider'] =  DB::table('home_slider')->get();
             
             return $data;
         });
+        
+        // Add mobile flag to data
+        $data['is_mobile'] = $isMobile;
 
         $homeContent = $data['content']->first();
         $data['meta_title'] = $homeContent->meta_title ?? '';
