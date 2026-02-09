@@ -175,6 +175,20 @@
    /* Hero */
    .hero-section{background:linear-gradient(135deg,#c6d8b7ff,#e8e8e8);padding:40px 0}.hero-section-mobile{background:linear-gradient(135deg,#c6d8b7ff,#e8e8e8);padding:20px 0}.hero-title{font-size:24px;font-weight:700;color:#2c2c2c;line-height:1.2;margin-bottom:12px}.hero-subtitle{font-size:15px;color:#4d4b4b;line-height:1.5;margin-bottom:20px}.hero-btn{display:inline-block;padding:12px 30px;background:#86C342;color:#fff!important;font-size:16px;font-weight:600;border-radius:5px;text-decoration:none}img{max-width:100%;height:auto}@media (max-width:767px){.hero-section{display:none!important}.hide-on-mobile{display:none!important}.logo img{max-width:240px}}@media (min-width:768px){.hero-section-mobile{display:none!important}}
    </style>
+   <script>
+   // Load CSS after page renders
+   window.addEventListener('load', function() {
+       setTimeout(function() {
+           var css = ['{{ url("box_assets/css/mbpmain.min.css") }}'];
+           css.forEach(function(href) {
+               var link = document.createElement('link');
+               link.rel = 'stylesheet';
+               link.href = href;
+               document.head.appendChild(link);
+           });
+       }, 100);
+   });
+   </script>
    @else
    <!-- Other pages: Normal loading -->
    @foreach ($criticalStyles as $href)
