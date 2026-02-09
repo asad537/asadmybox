@@ -73,11 +73,6 @@
    <link rel="dns-prefetch" href="https://www.google.com">
    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
    
-   <!-- Preload LCP image for home page with responsive sizes -->
-   @if(Request::is('/'))
-   <link rel="preload" as="image" href="{{ url('images/custom-boxes-and-packaging-myboxprinting.webp') }}" fetchpriority="high" imagesrcset="{{ url('images/custom-boxes-and-packaging-myboxprinting.webp') }} 800w" imagesizes="(max-width: 768px) 100vw, 50vw">
-   @endif
-   
    @php
        $mbpMainPath = public_path('box_assets/css/mbpmain.min.css');
        $mbpMainVersion = config('app.env') === 'local'
@@ -107,54 +102,7 @@
     
     <!-- Inline Critical CSS for Above-the-Fold Content -->
     <style>
-    /* Ultra-minimal critical CSS for instant render */
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:system-ui,-apple-system,sans-serif;line-height:1.5;overflow-x:hidden;background:#fff}
-    
-    /* Header - prevent FOUC */
-    .header-main,.header-main1{min-height:60px;background:#fff;position:relative}
-    .header-main .row,.header-main1 .row{display:flex;align-items:center}
-    .logo{min-height:60px;display:flex!important;align-items:center;opacity:1!important;visibility:visible!important}
-    .logo a{display:block!important}
-    .logo img{max-width:280px;height:auto;display:block!important;opacity:1!important;visibility:visible!important}
-    
-    /* Hero */
-    .hero-section{background:linear-gradient(135deg,#c6d8b7ff,#e8e8e8);min-height:400px;padding:40px 0}
-    .hero-section-mobile{background:linear-gradient(135deg,#c6d8b7ff,#e8e8e8);padding:20px 0}
-    .hero-title{font-size:24px;font-weight:700;color:#2c2c2c;line-height:1.2;margin-bottom:12px}
-    .hero-subtitle{font-size:15px;color:#4d4b4b;line-height:1.5;margin-bottom:20px}
-    .hero-btn{display:inline-block;padding:12px 30px;background:#86C342;color:#fff!important;font-size:16px;font-weight:600;border-radius:5px;text-decoration:none}
-    
-    /* Layout */
-    img{max-width:100%;height:auto}
-    .container{width:100%;padding:0 15px;margin:0 auto;max-width:1140px}
-    .container-fluid{width:100%;padding:0 15px}
-    .row{display:flex;flex-wrap:wrap;margin:0 -15px}
-    .col-6,.col-lg-6,.col-md-12,.col-xl-3,.col-xl-9{padding:0 15px}
-    .col-6{flex:0 0 50%;max-width:50%}
-    .text-center{text-align:center}
-    .mb-4{margin-bottom:1.5rem}
-    .d-lg-none{display:block}
-    
-    @media (max-width:767px){
-        .hero-section{display:none!important}
-        .hide-on-mobile{display:none!important}
-        .logo img{max-width:240px}
-    }
-    @media (min-width:768px){
-        .hero-section-mobile{display:none!important}
-        .d-lg-none{display:none}
-        .col-md-12{flex:0 0 100%;max-width:100%}
-    }
-    @media (min-width:992px){
-        .col-lg-6{flex:0 0 50%;max-width:50%}
-        .col-xl-3{flex:0 0 25%;max-width:25%}
-        .col-xl-9{flex:0 0 75%;max-width:75%}
-        .container{max-width:960px}
-    }
-    @media (min-width:1200px){
-        .container{max-width:1140px}
-    }
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.5;text-rendering:optimizeLegibility;overflow-x:hidden;contain:layout style paint}html{scroll-behavior:smooth}.header-main{min-height:70px;background:#fff;position:relative;contain:layout}.logo{min-height:60px;display:flex!important;align-items:center;visibility:visible!important;opacity:1!important;contain:layout}.logo img{max-width:300px;height:auto;display:block!important;visibility:visible!important;will-change:auto}.hero-section{background:linear-gradient(135deg,#c6d8b7ff 0%,#e8e8e8 100%);min-height:500px;contain:layout style}.hero-title{font-size:32px;font-weight:700;color:#2c2c2c;line-height:1.3;contain:layout}.hero-subtitle{font-size:18px;color:#4d4b4bff;line-height:1.6;contain:layout}.hero-btn{display:inline-block;padding:12px 30px;background-color:#86C342;color:#fff!important;font-size:16px;font-weight:600;border-radius:5px;text-decoration:none;transition:all .3s ease;will-change:transform}@media (max-width:767px){.header-main{min-height:60px}.logo img{max-width:280px;width:auto;height:auto;max-height:60px}.hero-section{display:none!important}.hero-section-mobile{display:block!important;padding:30px 0!important}.hero-title{font-size:24px!important}.hero-subtitle{font-size:15px!important}.hide-on-mobile{display:none!important}.cp-services-area{padding-top:20px!important;margin-top:0!important}.hero-image-content{min-height:auto!important}.logos-wrapper{gap:15px!important}}@media (min-width:768px){.hero-section-mobile{display:none!important}}img{max-width:100%;height:auto;content-visibility:auto;contain:layout}img[loading="lazy"]{content-visibility:auto}.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto;contain:layout}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}.row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px;contain:layout}.col-6,.col-lg-6,.col-md-12{position:relative;width:100%;padding-right:15px;padding-left:15px}.col-6{flex:0 0 50%;max-width:50%}@media (min-width:768px){.col-md-12{flex:0 0 100%;max-width:100%}}@media (min-width:992px){.col-lg-6{flex:0 0 50%;max-width:50%}}.text-center{text-align:center!important}.mb-4{margin-bottom:1.5rem!important}.mt-40{margin-top:40px!important}.container-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.d-none{display:none!important}.d-lg-none{display:block!important}@media (min-width:992px){.d-lg-none{display:none!important}}
     </style>
     <style>
     /*! MeanMenu 2.0.7 */
@@ -165,43 +113,16 @@
     </style>
     
    <!-- CSS here -->
-   @if(Request::is('/'))
-   <!-- Home page: ONLY inline CSS, everything else loads after -->
-   <style>
-   /* Complete Bootstrap Grid inline for home page */
-   .container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}.container-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.row{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}.col,.col-1,.col-10,.col-11,.col-12,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-auto,.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-auto,.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-auto,.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-auto,.col-xl,.col-xl-1,.col-xl-10,.col-xl-11,.col-xl-12,.col-xl-2,.col-xl-3,.col-xl-4,.col-xl-5,.col-xl-6,.col-xl-7,.col-xl-8,.col-xl-9,.col-xl-auto{position:relative;width:100%;padding-right:15px;padding-left:15px}.col-6{-ms-flex:0 0 50%;flex:0 0 50%;max-width:50%}@media (min-width:768px){.col-md-12{-ms-flex:0 0 100%;flex:0 0 100%;max-width:100%}}@media (min-width:992px){.col-lg-6{-ms-flex:0 0 50%;flex:0 0 50%;max-width:50%}}@media (min-width:1200px){.col-xl-3{-ms-flex:0 0 25%;flex:0 0 25%;max-width:25%}.col-xl-9{-ms-flex:0 0 75%;flex:0 0 75%;max-width:75%}}.d-none{display:none!important}.d-lg-none{display:none!important}@media (max-width:991.98px){.d-lg-none{display:block!important}}.text-center{text-align:center!important}.mb-4{margin-bottom:1.5rem!important}.align-items-center{-ms-flex-align:center!important;align-items:center!important}
-   /* Header & Menu */
-   .header-main,.header-main1{background:#fff;position:relative;z-index:999}.header-main .row,.header-main1 .row{display:flex;align-items:center}.logo{display:flex!important;align-items:center;padding:10px 0;opacity:1!important;visibility:visible!important}.logo a{display:block!important}.logo img{max-width:280px;height:auto;display:block!important;opacity:1!important;visibility:visible!important}
-   /* Hero */
-   .hero-section{background:linear-gradient(135deg,#c6d8b7ff,#e8e8e8);padding:40px 0}.hero-section-mobile{background:linear-gradient(135deg,#c6d8b7ff,#e8e8e8);padding:20px 0}.hero-title{font-size:24px;font-weight:700;color:#2c2c2c;line-height:1.2;margin-bottom:12px}.hero-subtitle{font-size:15px;color:#4d4b4b;line-height:1.5;margin-bottom:20px}.hero-btn{display:inline-block;padding:12px 30px;background:#86C342;color:#fff!important;font-size:16px;font-weight:600;border-radius:5px;text-decoration:none}img{max-width:100%;height:auto}@media (max-width:767px){.hero-section{display:none!important}.hide-on-mobile{display:none!important}.logo img{max-width:240px}}@media (min-width:768px){.hero-section-mobile{display:none!important}}
-   </style>
-   <script>
-   // Load CSS after page renders
-   window.addEventListener('load', function() {
-       setTimeout(function() {
-           var css = ['{{ url("box_assets/css/mbpmain.min.css") }}'];
-           css.forEach(function(href) {
-               var link = document.createElement('link');
-               link.rel = 'stylesheet';
-               link.href = href;
-               document.head.appendChild(link);
-           });
-       }, 100);
-   });
-   </script>
-   @else
-   <!-- Other pages: Normal loading -->
    @foreach ($criticalStyles as $href)
        <link rel="stylesheet" href="{{ $href }}">
    @endforeach
-   @endif
-   
    @foreach ($nonCriticalStyles as $href)
        <link rel="preload" as="style" href="{{ $href }}" onload="this.onload=null;this.rel='stylesheet'">
        <noscript><link rel="stylesheet" href="{{ $href }}"></noscript>
    @endforeach
-   
-   <!-- Fonts: Load async with font-display swap -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <!-- Preload critical fonts with font-display swap -->
    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
    
@@ -218,6 +139,8 @@
 
    <link rel="shortcut icon" type="image/x-icon" href="{{url('mbp.png')}}">
    
+   <!-- Preload Font Awesome for faster icon rendering -->
+   <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css">
    <!-- Google Tag Manager - Delayed until window load for performance -->
 <script>
 // Only load GTM after window load to prevent blocking LCP/FCP

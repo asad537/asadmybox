@@ -112,59 +112,84 @@
             </div>
         </section>
         
-        <section class="hero-section-mobile d-lg-none" style="background: linear-gradient(135deg, #c6d8b7ff 0%, #e8e8e8 100%); padding: 20px 0;">
+        <section class="hero-section-mobile d-lg-none" style="background: linear-gradient(135deg, #c6d8b7ff 0%, #e8e8e8 100%); padding: 30px 0;">
             <div class="container-fluid" style="padding: 0 10px;">
                 <div class="text-center mb-4">
-                    <!-- Ultra-optimized mobile image -->
-                    <img src="{{ url('images/custom-boxes-and-packaging-myboxprinting.webp') }}" 
-                         alt="{{$our_home_slider[0]->mini_title}}" 
-                         width="350"
-                         height="233"
-                         fetchpriority="high"
-                         loading="eager"
-                         decoding="sync"
-                         style="width:100%;max-width:350px;height:auto;margin-bottom:15px">
+                    <picture>
+                        <!-- Mobile optimized smaller image -->
+                        <source media="(max-width: 480px)" 
+                                srcset="{{ url('images/custom-boxes-and-packaging-myboxprinting.webp') }}" 
+                                width="400" 
+                                height="267">
+                        <img src="{{ url('images') . '/' . $our_home_slider[0]->slider_banner }}" 
+                             alt="{{$our_home_slider[0]->mini_title}}" 
+                             class="img-fluid" 
+                             width="400"
+                             height="267"
+                             fetchpriority="high"
+                             loading="eager"
+                             decoding="sync"
+                             importance="high"
+                             sizes="(max-width: 480px) 400px, 450px"
+                             style="width: 100%; max-width: 400px; height: auto; margin-bottom: 20px; contain: layout;">
+                    </picture>
                 </div>
 
                 <div class="text-center mb-4">
-                    <h2 style="font-size:24px;font-weight:700;color:#2c2c2c;margin-bottom:12px;line-height:1.2">
+                    <h2 style="font-size: 28px; font-weight: 700; color: #2c2c2c; margin-bottom: 15px; line-height: 1.2;">
                         {{$our_home_slider[0]->mini_title}}
                     </h2>
-                    <p style="font-size:15px;color:#4d4b4b;margin-bottom:20px;line-height:1.5;padding:0 10px">
+                    <p style="font-size: 17px; color: #4d4b4bff; margin-bottom: 25px; line-height: 1.5; padding: 0 10px;">
                         {{$our_home_slider[0]->slider_description}}
                     </p>
                     
-                    <div style="margin:20px 0">
-                        <a href="{{url('get-quote')}}" style="display:inline-block;padding:12px 30px;background:#86C342;color:#fff!important;font-size:16px;font-weight:600;border-radius:5px;text-decoration:none">
+                    <div class="text-center" style="margin-top: 30px; margin-bottom: 30px;">
+                        <a href="{{url('get-quote')}}" class="hero-btn" style="display: inline-block; padding: 14px 35px; background-color:#86C342; color:white !important; font-size: 17px; font-weight: 600; border-radius: 5px; text-decoration: none; box-shadow: 0 4px 15px rgba(134, 195, 66, 0.3);">
                             Request Quote
                         </a>
                     </div>
 
-                    <!-- Simplified Trust Badges for Mobile -->
-                    <div style="display:flex;flex-direction:column;gap:15px;align-items:center;margin:20px 10px 0">
+                    <!-- Trust Badges for Mobile -->
+                    <div class="logos-wrapper mt-40" style="display: flex; flex-direction: column; gap: 25px; align-items: center; justify-content: center; margin: 0 10px;">
                         <!-- Google Reviews Badge -->
-                        <div style="display:flex;align-items:center;gap:8px">
-                          <a href="https://g.page/r/CXoS0VYj1SlmEBI/review" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:8px">
-                            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px">
+                        <div class="review-badge google-badge" style="display: inline-flex; background: transparent; border: none; padding: 0; align-items: center; gap: 10px;">
+                          <a href="https://g.page/r/CXoS0VYj1SlmEBI/review" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+                            <svg class="google-g-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px;">
                               <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
                               <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
                               <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
                               <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
                             </svg>
-                            <span style="font-size:12px;color:#5f6368">Review</span>
-                            <span style="font-size:20px;font-weight:700;color:#202124">5.0</span>
-                            <span style="color:#FBBC04;font-size:14px">★★★★★</span>
+                            <span class="google-text" style="font-size: 13px; color: #5f6368; font-weight: 400;">Review</span>
+                            <span class="rating-number" style="font-size: 24px; font-weight: 700; color: #202124; line-height: 1;">5.0</span>
+                            <div class="stars" style="display: flex; gap: 2px;">
+                              <span class="star" style="color: #FBBC04; font-size: 16px;">★</span>
+                              <span class="star" style="color: #FBBC04; font-size: 16px;">★</span>
+                              <span class="star" style="color: #FBBC04; font-size: 16px;">★</span>
+                              <span class="star" style="color: #FBBC04; font-size: 16px;">★</span>
+                              <span class="star" style="color: #FBBC04; font-size: 16px;">★</span>
+                            </div>
                           </a>
                         </div>
                         
                         <!-- TrustPilot Badge -->
-                        <div style="display:flex;align-items:center;gap:8px">
-                          <a href="https://www.trustpilot.com/review/myboxprinting.com" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:8px">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px">
+                        <div class="review-badge trustpilot-badge" style="display: inline-flex; background: transparent; border: none; padding: 0; align-items: center; gap: 10px;">
+                          <a href="https://www.trustpilot.com/review/myboxprinting.com" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+                            <svg class="tp-star-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px;">
                               <path fill="#00B67A" d="M12 0L15.09 7.26L23 8.27L17.5 13.14L18.82 21.02L12 17.27L5.18 21.02L6.5 13.14L1 8.27L8.91 7.26L12 0Z"/>
                             </svg>
-                            <span style="font-size:14px;font-weight:700;color:#191919">Trustpilot</span>
-                            <span style="font-size:11px;font-weight:600;color:#191919">Excellent 4.9/5</span>
+                            <span class="tp-text-logo" style="font-size: 16px; font-weight: 700; color: #191919;">Trustpilot</span>
+                            <div class="tp-stars-row" style="display: flex; gap: 2px;">
+                              <span class="tp-star-box" style="background: #00B67A; color: white; font-size: 12px; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center;">★</span>
+                              <span class="tp-star-box" style="background: #00B67A; color: white; font-size: 12px; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center;">★</span>
+                              <span class="tp-star-box" style="background: #00B67A; color: white; font-size: 12px; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center;">★</span>
+                              <span class="tp-star-box" style="background: #00B67A; color: white; font-size: 12px; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center;">★</span>
+                              <span class="tp-star-box half" style="background: linear-gradient(90deg, #00B67A 50%, #dcdce6 50%); color: white; font-size: 12px; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center;">★</span>
+                            </div>
+                            <div class="tp-score-section" style="display: flex; flex-direction: column; align-items: flex-start; line-height: 1.2;">
+                              <span class="tp-excellent" style="font-size: 12px; font-weight: 600; color: #191919;">Excellent</span>
+                              <span class="tp-score" style="font-size: 11px; font-weight: 400; color: #5f6368;">4.9/5</span>
+                            </div>
                           </a>
                         </div>
                     </div>
