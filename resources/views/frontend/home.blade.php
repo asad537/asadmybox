@@ -426,7 +426,7 @@
                     <div class="col-lg-2 col-md-4 col-sm-4 col-4 col-6">
                         <div class="text-center">
                             <div class="fbox-icon">
-                                <i class="i-alt i-light noborder"><img src="{{url('box_assets/img/feature-icon-1.png')}}"
+                                <i class="i-alt i-light noborder"><img src="{{url('assets/img/no-charges.png')}}"
                                                                        loading="lazy" width="99" height="99" alt="no die & plate charges"></i>
                             </div>
                             <p class="point-name pt-2 text-uppercase">No die & <br>Plate Charges</p>
@@ -436,7 +436,7 @@
                     <div class="col-lg-2 col-md-4 col-sm-4 col-4 col-6">
                         <div class="text-center">
                             <div class="fbox-icon">
-                                <i class="i-alt i-light noborder"><img src="{{url('box_assets/img/feature-icon-2.png')}}"
+                                <i class="i-alt i-light noborder"><img src="{{url('assets/img/quick-turnarround.png')}}"
                                                                        loading="lazy" width="99" height="99" alt="quick turnaround time"></i>
                             </div>
                             <p class="point-name pt-2 text-uppercase">Quick <br> Turnaround<br>Time
@@ -449,7 +449,7 @@
                         <div class="text-center">
                             <div class="fbox-icon">
                                 <i class="i-alt i-light noborder"><img
-                                        src="{{url('box_assets/img/feature-icon-3.png')}}" loading="lazy" width="99"
+                                        src="{{url('assets/img/free-shipping.png')}}" loading="lazy" width="99"
                                         height="99" alt="free shipping"></i>
                             </div>
                             <p class="point-name pt-2 text-uppercase">Free  <br>Shipping</p>
@@ -459,7 +459,7 @@
                     <div class="col-lg-2 col-md-4 col-sm-4 col-4 col-6">
                         <div class="text-center">
                             <div class="fbox-icon">
-                                <i class="i-alt i-light noborder"><img src="{{url('box_assets/img/feature-icon-4.png')}}"
+                                <i class="i-alt i-light noborder"><img src="{{url('assets/img/no-minimum-order.png')}}"
                                                                        loading="lazy" width="99" height="99" alt="Starting from 50 boxes"></i>
                             </div>
                             <p class="point-name  pt-2 text-uppercase ">Starting From <br> 50 Boxes</p>
@@ -469,7 +469,7 @@
                     <div class="col-lg-2 col-md-4 col-sm-4 col-4 col-6">
                         <div class="text-center">
                             <div class="fbox-icon">
-                                <i class="i-alt i-light noborder"><img src="{{url('box_assets/img/feature-icon-5.png')}}"
+                                <i class="i-alt i-light noborder"><img src="{{url('assets/img/custom-size.png')}}"
                                                                        loading="lazy" width="99" height="99" alt="Customize size & style"></i>
                             </div>
                             <p class="point-name pt-2 text-uppercase">Customize Size <br> & Style</p>
@@ -479,7 +479,7 @@
                     <div class="col-lg-2 col-md-4 col-sm-4 col-4 col-6">
                         <div class="text-center">
                             <div class="fbox-icon">
-                                <i class="i-alt i-light noborder"><img src="{{url('box_assets/img/free-design.png')}}"
+                                <i class="i-alt i-light noborder"><img src="{{url('assets/img/free-design.png')}}"
                                                                        loading="lazy" width="99" height="99" alt="free graphic designing"></i>
                             </div>
                             <p class="point-name pt-2 text-uppercase ">Free Graphic <br> designing</p>
