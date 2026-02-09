@@ -104,29 +104,47 @@
     <style>
     /* Ultra-minimal critical CSS for instant render */
     *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:system-ui,-apple-system,sans-serif;line-height:1.5;overflow-x:hidden}
-    .header-main{min-height:60px;background:#fff}
-    .logo{min-height:60px;display:flex!important;align-items:center}
-    .logo img{max-width:280px;height:auto;display:block!important}
-    .hero-section{background:linear-gradient(135deg,#c6d8b7ff,#e8e8e8);min-height:400px}
-    .hero-section-mobile{background:linear-gradient(135deg,#c6d8b7ff,#e8e8e8);padding:30px 0}
-    .hero-title{font-size:24px;font-weight:700;color:#2c2c2c;line-height:1.2}
-    .hero-subtitle{font-size:15px;color:#4d4b4b;line-height:1.5}
+    body{font-family:system-ui,-apple-system,sans-serif;line-height:1.5;overflow-x:hidden;background:#fff}
+    
+    /* Header - prevent FOUC */
+    .header-main,.header-main1{min-height:60px;background:#fff;position:relative}
+    .header-main .row,.header-main1 .row{display:flex;align-items:center}
+    .logo{min-height:60px;display:flex!important;align-items:center;opacity:1!important;visibility:visible!important}
+    .logo a{display:block!important}
+    .logo img{max-width:280px;height:auto;display:block!important;opacity:1!important;visibility:visible!important}
+    
+    /* Hero */
+    .hero-section{background:linear-gradient(135deg,#c6d8b7ff,#e8e8e8);min-height:400px;padding:40px 0}
+    .hero-section-mobile{background:linear-gradient(135deg,#c6d8b7ff,#e8e8e8);padding:20px 0}
+    .hero-title{font-size:24px;font-weight:700;color:#2c2c2c;line-height:1.2;margin-bottom:12px}
+    .hero-subtitle{font-size:15px;color:#4d4b4b;line-height:1.5;margin-bottom:20px}
     .hero-btn{display:inline-block;padding:12px 30px;background:#86C342;color:#fff!important;font-size:16px;font-weight:600;border-radius:5px;text-decoration:none}
+    
+    /* Layout */
     img{max-width:100%;height:auto}
-    .container{width:100%;padding:0 15px;margin:0 auto}
+    .container{width:100%;padding:0 15px;margin:0 auto;max-width:1140px}
+    .container-fluid{width:100%;padding:0 15px}
+    .row{display:flex;flex-wrap:wrap;margin:0 -15px}
+    .col-6,.col-lg-6,.col-md-12,.col-xl-3,.col-xl-9{padding:0 15px}
+    .col-6{flex:0 0 50%;max-width:50%}
     .text-center{text-align:center}
     .mb-4{margin-bottom:1.5rem}
     .d-lg-none{display:block}
+    
     @media (max-width:767px){
         .hero-section{display:none!important}
         .hide-on-mobile{display:none!important}
+        .logo img{max-width:240px}
     }
     @media (min-width:768px){
         .hero-section-mobile{display:none!important}
         .d-lg-none{display:none}
+        .col-md-12{flex:0 0 100%;max-width:100%}
     }
     @media (min-width:992px){
+        .col-lg-6{flex:0 0 50%;max-width:50%}
+        .col-xl-3{flex:0 0 25%;max-width:25%}
+        .col-xl-9{flex:0 0 75%;max-width:75%}
         .container{max-width:960px}
     }
     @media (min-width:1200px){
@@ -143,11 +161,10 @@
     
    <!-- CSS here -->
    @if(Request::is('/'))
-   <!-- Home page: Inline critical CSS only, load rest async -->
-   @foreach ($criticalStyles as $href)
-       <link rel="preload" as="style" href="{{ $href }}" onload="this.onload=null;this.rel='stylesheet'">
-       <noscript><link rel="stylesheet" href="{{ $href }}"></noscript>
-   @endforeach
+   <!-- Home page: Load Bootstrap sync for instant render, rest async -->
+   <link rel="stylesheet" href="{{ url('box_assets/css/2bootstrap.min.css') }}">
+   <link rel="preload" as="style" href="{{ $mbpMainHref }}" onload="this.onload=null;this.rel='stylesheet'">
+   <noscript><link rel="stylesheet" href="{{ $mbpMainHref }}"></noscript>
    @else
    <!-- Other pages: Normal loading -->
    @foreach ($criticalStyles as $href)
