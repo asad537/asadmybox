@@ -83,12 +83,13 @@
            : (file_exists($mbpMainPath) ? filemtime($mbpMainPath) : '');
        $mbpMainHref = url('box_assets/css/mbpmain.min.css') . ($mbpMainVersion ? '?v=' . $mbpMainVersion : '');
        
-       // Optimization: Defer heavy CSS files since we have inline critical CSS
-       $criticalStyles = [];
-       
-       $nonCriticalStyles = [
+       // Reverting deferral to prevent FOUC - styles are critical for layout
+       $criticalStyles = [
            url('box_assets/css/2bootstrap.min.css'),
            $mbpMainHref,
+       ];
+       
+       $nonCriticalStyles = [
            'https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css',
            url('box_assets/css/preloader.css'),
            url('box_assets/css/animate.min.css'),
