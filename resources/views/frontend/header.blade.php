@@ -73,6 +73,11 @@
    <link rel="dns-prefetch" href="https://www.google.com">
    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
    
+   <!-- Preload LCP image for home page with responsive sizes -->
+   @if(Request::is('/'))
+   <link rel="preload" as="image" href="{{ url('images/custom-boxes-and-packaging-myboxprinting.webp') }}" fetchpriority="high" imagesrcset="{{ url('images/custom-boxes-and-packaging-myboxprinting.webp') }} 800w" imagesizes="(max-width: 768px) 100vw, 50vw">
+   @endif
+   
    @php
        $mbpMainPath = public_path('box_assets/css/mbpmain.min.css');
        $mbpMainVersion = config('app.env') === 'local'
@@ -161,10 +166,15 @@
     
    <!-- CSS here -->
    @if(Request::is('/'))
-   <!-- Home page: Load Bootstrap sync for instant render, rest async -->
-   <link rel="stylesheet" href="{{ url('box_assets/css/2bootstrap.min.css') }}">
-   <link rel="preload" as="style" href="{{ $mbpMainHref }}" onload="this.onload=null;this.rel='stylesheet'">
-   <noscript><link rel="stylesheet" href="{{ $mbpMainHref }}"></noscript>
+   <!-- Home page: ONLY inline CSS, everything else loads after -->
+   <style>
+   /* Complete Bootstrap Grid inline for home page */
+   .container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}.container-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.row{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}.col,.col-1,.col-10,.col-11,.col-12,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-auto,.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-auto,.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-auto,.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-auto,.col-xl,.col-xl-1,.col-xl-10,.col-xl-11,.col-xl-12,.col-xl-2,.col-xl-3,.col-xl-4,.col-xl-5,.col-xl-6,.col-xl-7,.col-xl-8,.col-xl-9,.col-xl-auto{position:relative;width:100%;padding-right:15px;padding-left:15px}.col-6{-ms-flex:0 0 50%;flex:0 0 50%;max-width:50%}@media (min-width:768px){.col-md-12{-ms-flex:0 0 100%;flex:0 0 100%;max-width:100%}}@media (min-width:992px){.col-lg-6{-ms-flex:0 0 50%;flex:0 0 50%;max-width:50%}}@media (min-width:1200px){.col-xl-3{-ms-flex:0 0 25%;flex:0 0 25%;max-width:25%}.col-xl-9{-ms-flex:0 0 75%;flex:0 0 75%;max-width:75%}}.d-none{display:none!important}.d-lg-none{display:none!important}@media (max-width:991.98px){.d-lg-none{display:block!important}}.text-center{text-align:center!important}.mb-4{margin-bottom:1.5rem!important}.align-items-center{-ms-flex-align:center!important;align-items:center!important}
+   /* Header & Menu */
+   .header-main,.header-main1{background:#fff;position:relative;z-index:999}.header-main .row,.header-main1 .row{display:flex;align-items:center}.logo{display:flex!important;align-items:center;padding:10px 0;opacity:1!important;visibility:visible!important}.logo a{display:block!important}.logo img{max-width:280px;height:auto;display:block!important;opacity:1!important;visibility:visible!important}
+   /* Hero */
+   .hero-section{background:linear-gradient(135deg,#c6d8b7ff,#e8e8e8);padding:40px 0}.hero-section-mobile{background:linear-gradient(135deg,#c6d8b7ff,#e8e8e8);padding:20px 0}.hero-title{font-size:24px;font-weight:700;color:#2c2c2c;line-height:1.2;margin-bottom:12px}.hero-subtitle{font-size:15px;color:#4d4b4b;line-height:1.5;margin-bottom:20px}.hero-btn{display:inline-block;padding:12px 30px;background:#86C342;color:#fff!important;font-size:16px;font-weight:600;border-radius:5px;text-decoration:none}img{max-width:100%;height:auto}@media (max-width:767px){.hero-section{display:none!important}.hide-on-mobile{display:none!important}.logo img{max-width:240px}}@media (min-width:768px){.hero-section-mobile{display:none!important}}
+   </style>
    @else
    <!-- Other pages: Normal loading -->
    @foreach ($criticalStyles as $href)

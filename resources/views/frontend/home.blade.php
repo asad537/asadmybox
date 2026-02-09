@@ -85,27 +85,26 @@
                 <div class="col-lg-6 col-md-12" style="padding: 0;">
                     <div class="hero-image-content" style="position: relative; width: 100%; min-height: 500px; display: flex; align-items: center; justify-content: center;">
                         <picture>
-                            <!-- Mobile optimized image (smallest) -->
+                            <!-- Mobile optimized image (smallest, 350px width) -->
                             <source media="(max-width: 480px)" 
                                     srcset="{{ url('images/custom-boxes-and-packaging-myboxprinting.webp') }}" 
-                                    width="480" 
-                                    height="300">
-                            <!-- Tablet -->
+                                    width="350" 
+                                    height="233">
+                            <!-- Tablet (700px width) -->
                             <source media="(max-width: 991px)" 
-                                    srcset="{{ url('images') . '/' . $our_home_slider[0]->slider_banner }}" 
+                                    srcset="{{ url('images/custom-boxes-and-packaging-myboxprinting.webp') }}" 
                                     width="700" 
-                                    height="438">
-                            <!-- Desktop -->
+                                    height="467">
+                            <!-- Desktop (800px width) -->
                             <img src="{{ url('images/custom-boxes-and-packaging-myboxprinting.webp')}}" 
                                  alt="{{$our_home_slider[0]->mini_title}}" 
                                  class="img-fluid" 
                                  width="800"
-                                 height="500"
+                                 height="533"
                                  fetchpriority="high"
                                  loading="eager"
-                                 decoding="sync"
-                                 importance="high"
-                                 style="width: 100%; height: auto; object-fit: contain; max-height: 500px; contain: layout;">
+                                 decoding="async"
+                                 style="width: 100%; height: auto; object-fit: contain; max-height: 500px; display: block;">
                         </picture>
                     </div>
                 </div>
