@@ -197,8 +197,9 @@
         /* Responsive */
         @media (max-width: 900px) {
             body { flex-direction: column; height: auto; min-height: 100vh; }
-            .login-visual { min-height: 300px; padding: 2rem; flex: none; }
-            .visual-heading { font-size: 2rem; }
+            .login-visual { min-height: auto; padding: 2.5rem 2rem; flex: none; align-items: center; }
+            .visual-heading, .visual-text { display: none; }
+            .visual-logo { margin-bottom: 0; justify-content: center; width: 100%; }
             .login-form-container { padding: 2rem; flex: 1; }
         }
     </style>
